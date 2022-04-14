@@ -4,7 +4,7 @@
 
 # React-PWA
 
-A minimal React PWA application as a Github template.
+A minimal React PWA application.
 
 ## Synopsis
 
