@@ -1,30 +1,25 @@
-import React from 'react';
+// routes
+import Router from './routes';
+// theme
+import ThemeConfig from './theme';
+import GlobalStyles from './theme/globalStyles';
+// components
+import ScrollToTop from './components/ScrollToTop';
+import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
+//css
+import './index.css';
+import { useState } from 'react';
 
-import { RecoilRoot } from 'recoil';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// ----------------------------------------------------------------------
 
-import withErrorHandler from 'errorHandling';
-import { App as ErrorBoundaryFallback } from 'errorHandling/Fallbacks';
-
-import Layout from 'sections/Layout';
-import Fb from 'components/Fb';
-import { ThemeProvider } from 'theme';
-
-import { BrowserRouter as Router } from 'react-router-dom';
-
-function App() {
+export default function App() {
+  const [email,setEmail]=useState('');
   return (
-    <RecoilRoot>
-      <ThemeProvider>
-        <Fb>
-          <CssBaseline />
-          <Router>
-            <Layout />
-          </Router>
-        </Fb>
-      </ThemeProvider>
-    </RecoilRoot>
+    <ThemeConfig>
+      <ScrollToTop />
+      <GlobalStyles />
+      <BaseOptionChartStyle />
+      <Router email={email} setEmail={setEmail}/>
+    </ThemeConfig>
   );
 }
-
-export default withErrorHandler(App, ErrorBoundaryFallback);
