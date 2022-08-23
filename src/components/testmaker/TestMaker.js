@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from './ui/Button'
+import Button from '../ui/Button'
 import styles from './TestMaker.module.css'
 
 const TestMaker = (props) => {

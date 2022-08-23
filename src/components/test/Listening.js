@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react'
-import Button from './ui/Button'
-import speakerIcon from '../assets/icon_audio.png'
+import Button from '../ui/Button'
+import speakerIcon from '../../assets/icon_audio.png'
 import styles from './Listening.module.css'
 
 const Listening = (props) => {
