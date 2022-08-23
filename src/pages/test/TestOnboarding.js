@@ -17,6 +17,15 @@ import { LoadingButton } from "@mui/lab";
 
 // ----------------------------------------------------------------------
 import swal from "sweetalert";
+function generateRandomNumber() {
+  var minm = 100000;
+  var maxm = 999999;
+  return Math.floor(Math
+  .random() * (maxm - minm + 1)) + minm;
+}
+
+const testId = generateRandomNumber();
+
 
 export default function RegisterForm() {
   const navigate = useNavigate();
@@ -71,13 +80,42 @@ export default function RegisterForm() {
       formdata.append("gender", values.gender);
       formdata.append("age", values.gender);
       formdata.append("grade", values.grade);
+
+      swal({
+        title: "Your Test Id is " + testId,
+        icon: "success",
+        closeOnClickOutside: false,
+        buttons: false,
+        className: "pb-5",
+        timer: 5000,
+      })
+
+      // fetch(
+      //   process.env.REACT_APP_BACKEND_SERVER_HOST_URL +
+      //     "/api/v1.0/auth/signup",
+      //   {
+      //     method: "POST",
+      //     body: formdata,
+      //   }
+      // ).then((data) => {
+      //   swal({
+      //     title: "Your Test Id is " + testId,
+      //     icon: "success",
+      //     closeOnClickOutside: false,
+      //     buttons: false,
+      //     className: "pb-5",
+      //     timer: 3000,
+      //   }).then(() => {
+      //     navigate("/test/writing", { replace: true });
+      //   });
+      // });
     },
   });
 
   const { errors, touched, values, handleSubmit, getFieldProps } = formik;
 
   return (
-    <div style={{margin:"px"}}>
+    <div style={{margin:"10%"}}>
     <FormikProvider value={formik}  >
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
@@ -140,7 +178,7 @@ export default function RegisterForm() {
             type="submit"
             variant="contained"
           >
-            Register
+            Start
           </LoadingButton>
         </Stack>
       </Form>
