@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 import DashboardApp from "./pages/DashboardApp";
 import TestOnboarding from "./pages/test/TestOnboarding.js";
 import NotFound from './pages/Page404';
-import STT from "./components/test/speech-to-text.js";
+import STT from "./components/test/Listening/speech-to-text.js";
 import Upload from "./utils/azurefileupload/App.js";
 
 import Profile from "./pages/profile/Profile";
