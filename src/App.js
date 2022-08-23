@@ -1,30 +1,31 @@
-import React from 'react';
+// routes
+import Router from './routes';
+// theme
+import ThemeConfig from './theme';
+import GlobalStyles from './theme/globalStyles';
+// components
+import ScrollToTop from './components/ScrollToTop';
+import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
+//css
 
-import { RecoilRoot } from 'recoil';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// import TEST_LISTENING from './data/TEST_LISTENING';
+// import TestMaker from './components/testmaker/TestMaker';
+// import Listening from './components/test/Listening';
 
-import withErrorHandler from 'errorHandling';
-import { App as ErrorBoundaryFallback } from 'errorHandling/Fallbacks';
+import './index.css';
+import { useState } from 'react';
 
-import Layout from 'sections/Layout';
-import Fb from 'components/Fb';
-import { ThemeProvider } from 'theme';
+// ----------------------------------------------------------------------
 
-import { BrowserRouter as Router } from 'react-router-dom';
-
-function App() {
+export default function App() {
+  const [email,setEmail]=useState('');
   return (
-    <RecoilRoot>
-      <ThemeProvider>
-        <Fb>
-          <CssBaseline />
-          <Router>
-            <Layout />
-          </Router>
-        </Fb>
-      </ThemeProvider>
-    </RecoilRoot>
+    <ThemeConfig>
+      <ScrollToTop />
+      <GlobalStyles />
+      <BaseOptionChartStyle />
+      <Router email={email} setEmail={setEmail}/>
+    </ThemeConfig>
+    // <TestMaker details={TEST_LISTENING.details} questions={TEST_LISTENING.questions.easy} testComponent={Listening}/>
   );
 }
-
-export default withErrorHandler(App, ErrorBoundaryFallback);
