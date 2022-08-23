@@ -7,25 +7,7 @@ import {
 import Page from "../components/Page";
 import "react-notifications/lib/notifications.css";
 import swal from 'sweetalert';
-//   AppTasks,
-//   TopSellers,
-//   TopSellerOfTheWeek,
-//   TopSellerOfTheDay,
-//   AppNewsUpdate,
-//   TotalUsers,
-//   AppOrderTimeline,
-//   AppCurrentVisits,
-//   AppWebsiteVisits,
-//   AppTrafficBySite,
-//   AppCurrentSubject,
-//   AppConversionRates
-// } from '../components/_dashboard/app';
 
-
-// ----------------------------------------------------------------------
-//User file content
-// import { filter } from 'lodash';
-// import { sentenceCase } from 'change-case';
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -44,13 +26,10 @@ import {
 // import Label from '../components/Label';
 import Scrollbar from "../components/Scrollbar";
 import SearchNotFound from "../components/SearchNotFound";
-//
+
 import { useNavigate } from "react-router";
 
 export default function DashboardApp() {
-
-  const navigate = useNavigate();
-
 
   return (
     <Page title="Dashboard | MithranBuddy">
