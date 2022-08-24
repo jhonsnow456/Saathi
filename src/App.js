@@ -16,10 +16,12 @@ import Listening from './components/test/Listening/Listening';
 import TEST_ISHIHARA from './data/TEST_ISHIHARA';
 import Colorblind from './components/test/Colorblind/Colorblind';
 
+import TEST_HANDWRITING from './data/TEST_HANDWRITING';
 import Handwriting from './components/test/Handwriting/Handwriting';
 
 import './index.css';
 import { useState } from 'react';
+
 
 // ----------------------------------------------------------------------
 
@@ -35,6 +37,6 @@ export default function App() {
 
     // <TestMaker details={TEST_LISTENING.details} questions={TEST_LISTENING.questions.easy} testComponent={Listening}/>
     // <TestMaker details={TEST_ISHIHARA.details}  questions={TEST_ISHIHARA.questions} testComponent={Colorblind}/>
-    <TestMaker details={TEST_ISHIHARA.details}  questions={TEST_ISHIHARA.questions} testComponent={Handwriting}/>
+    <TestMaker details={TEST_HANDWRITING.details}  questions={TEST_HANDWRITING.questions} testComponent={Handwriting}/>
     );
 }
