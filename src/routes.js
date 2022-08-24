@@ -3,14 +3,22 @@ import { Navigate, useRoutes, useNavigate } from "react-router-dom";
 import DashboardLayout from "./layouts/dashboard";
 import LogoOnlyLayout from "./layouts/LogoOnlyLayout";
 //
-import Test from "./pages/test/Test";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import DashboardApp from "./pages/DashboardApp";
 import TestOnboarding from "./pages/test/TestOnboarding.js";
+import SpeechTest from "./components/test/Speaking/SpeechTest.js";
 import NotFound from './pages/Page404';
-import STT from "./components/test/Listening/speech-to-text.js";
+
+import TestMaker from "./components/testmaker/TestMaker";
 import Upload from "./utils/azurefileupload/App.js";
+import TEST_LISTENING from './data/TEST_LISTENING';
+import TEST_ISHIHARA from './data/TEST_ISHIHARA';
+
+import Listening from './components/test/Listening/Listening';
+import Colorblind from './components/test/Colorblind/Colorblind';
+import Handwriting from './components/test/Handwriting/Handwriting';
+import Speaking from './components/test/Speaking/speech-to-text';
 
 import Profile from "./pages/profile/Profile";
 import { useEffect, useState } from "react";
@@ -31,8 +39,11 @@ export default function Router(props) {
           path: "user/:id",
           element: <Profile /> ,
         },
-        { path: "test/new", element: <Test />  },
-        { path: "speechtotext", element: <STT />  },
+        { path: "test/new", element: <TestOnboarding />},
+        { path: "test/speech", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={SpeechTest}/>   },
+        { path: "test/color-blindness", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={Colorblind}/> },
+        { path: "test/writing", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={Handwriting}/> },
+        { path: "test/listening", element: <TestMaker details={TEST_LISTENING.details} questions={TEST_LISTENING.questions.easy} testComponent={Listening}/> },
         { path: "upload", element: <Upload />  },
         { path: "report/:id", element: <DashboardApp />  },
         { path: "login", element: <Login /> },
