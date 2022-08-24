@@ -1,5 +1,9 @@
 import React, {useEffect, useState, useRef} from 'react'
-import Button from '../../ui/Button'
+import {
+    Button,
+    TextField,
+  } from "@mui/material";
+import { styled } from '@mui/material/styles';
 import speakerIcon from '../../../assets/icon_audio.png'
 import styles from './Listening.module.css'
 
@@ -40,9 +44,14 @@ const Listening = (props) => {
             </section>
             <section className={styles.answer_section}>
                 <h3>Answer:</h3>
-                <input type="text" ref={inputRef}/>
+                <TextField type="text" ref={inputRef}/>
                 <Button onClick={handleAnswerCheck} title="Check Answer"/>
             </section>
+            <div style={{display:"flex"}}>
+                <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
+                    Next
+                </Button>
+            </div>
         </article>
     )
 }

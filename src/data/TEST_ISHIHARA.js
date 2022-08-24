@@ -1,6 +1,6 @@
 const TEST_ISHIHARA = {
     details: {
-        name: 'ishihara'
+        name: 'Ishihara'
     },
     questions: [
     {
