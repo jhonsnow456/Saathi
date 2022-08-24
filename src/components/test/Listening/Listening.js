@@ -8,7 +8,6 @@ import speakerIcon from '../../../assets/icon_audio.png'
 import styles from './Listening.module.css'
 
 const Listening = (props) => {
-    const [questionStatus, setQuestionStatus] = useState(false);
     const inputRef = useRef(null);
 
     const handlePlayAudio = () => {
@@ -20,17 +19,31 @@ const Listening = (props) => {
 
     const handleAnswerCheck = () => {
         const inputText = inputRef.current.value?.toLowerCase()
-        const targetText = props.data.title.toLowerCase()
-        setQuestionStatus(inputText == targetText)
+        const targetText = props.data.answer.toLowerCase()
+        return inputText === targetText
+    }
+
+    const handleSubmit = ()=>{
+        props.saveData("questions", {
+            [props.index]: {
+                ...props.data,
+                userResponse: inputRef.current.value?.toLowerCase(),
+                isUserResponseValid: handleAnswerCheck()
+            }
+        })
+
+        //clear text field
+        console.log(inputRef.current.value)
+        inputRef.current.value = ""
+
+        props.onSubmit()
     }
 
     //fixed multiple rerendering issues
     useEffect(()=>{
         const id = setTimeout(()=>{
             handlePlayAudio();
-            console.log("hero")
         },300);
-        console.log("heroo")
 
         return () => clearTimeout(id)
     },[props.data])
@@ -44,11 +57,10 @@ const Listening = (props) => {
             </section>
             <section className={styles.answer_section}>
                 <h3>Answer:</h3>
-                <TextField type="text" ref={inputRef}/>
-                <Button onClick={handleAnswerCheck}>Check Answer</Button>
+                <TextField type="text" inputRef={inputRef}/>
             </section>
             <section className="next_btn_container">
-                <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
+                <Button title="Submit" onClick={handleSubmit} variant="contained" size='large'>
                     Next
                 </Button>
             </section>
