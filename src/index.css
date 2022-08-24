@@ -27,3 +27,16 @@
     background-clip: content-box;
     background-color: #EA6000;
   }
+
+.next_btn_container {
+    position: fixed;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    bottom: 0;
+    left:0;
+    width: 100%;
+}
+
+.next_btn_container button {
+    width: 100%;
+}

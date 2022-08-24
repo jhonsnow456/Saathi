@@ -45,13 +45,13 @@ const Listening = (props) => {
             <section className={styles.answer_section}>
                 <h3>Answer:</h3>
                 <TextField type="text" ref={inputRef}/>
-                <Button onClick={handleAnswerCheck} title="Check Answer"/>
+                <Button onClick={handleAnswerCheck}>Check Answer</Button>
             </section>
-            <div style={{display:"flex"}}>
-                <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
+            <section className="next_btn_container">
+                <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
                     Next
                 </Button>
-            </div>
+            </section>
         </article>
     )
 }
