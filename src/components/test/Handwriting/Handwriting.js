@@ -1,6 +1,10 @@
 import React, {useCallback, useState, useRef} from 'react'
 import Webcam from 'react-webcam'
-import Button from '../../ui/Button'
+import {
+    Card,
+    Button,
+  } from "@mui/material";
+import { styled } from '@mui/material/styles';
 // import speakerIcon from '../../assets/icon_audio.png'
 import styles from './Handwriting.module.css'
 
@@ -25,6 +29,11 @@ const Handwriting = (props) => {
                     {imgSrc && <img className={styles.handwriting_image} src={imgSrc} alt="handwriting image"/>}
                 </section>
             </section>
+            <div style={{display:"flex"}}>
+                <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
+                    Next
+                </Button>
+            </div>
         </article>
     )
 }

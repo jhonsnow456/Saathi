@@ -7,13 +7,6 @@ import axios from "axios"
 import {
     Card,
     Button,
-    Table,
-    Avatar,
-    TableRow,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TablePagination,
   } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import {
@@ -42,13 +35,13 @@ const assemblyAI = axios.create({
 const TestContainer = styled('div')(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
-    height: "80vh",
+    height: "70vh",
     padding: "8px",
 }));
 
-const QuestionTemplateContainer = styled('div')(({ theme }) => ({
+const QuestionCointainer = styled('div')(({ theme }) => ({
     display: "flex",
-    height: "30vh",
+    height: "95%",
     padding: "8px",
 }));
 
@@ -70,9 +63,7 @@ function loadQuestionTemplate() {
 //     return (props.question)? toString(props.question) : "This is a Sample Question"
 // }
 
-export default function SpeechTest() {
-  const [isLoaded, setLoaded] = useState(false);
-
+export default function SpeechTest(props) {
   // Mic-Recorder-To-MP3
   const recorder = useRef(null) //Recorder
   const audioPlayer = useRef(null) //Ref for the HTML Audio Tag
@@ -174,16 +165,8 @@ export default function SpeechTest() {
 
 
     return (
-        <Container maxWidth="xl">
-            <TestContainer >
-                <QuestionTemplateContainer>
-                    {(isLoaded)
-                    ? (<div>Loaded</div>)
-                    : (<div>Not Loaded</div>)
-                    }
-                </QuestionTemplateContainer>
-                
-                <div style={{display:"flex", flexDirection:"column"}}>
+            <TestContainer>
+                <QuestionCointainer style={{display:"flex", flexDirection:"column"}}>
                     <div>
                       <button
                         className='btn btn-primary'
@@ -232,15 +215,14 @@ export default function SpeechTest() {
                     )}
 
                   
-                </div>
+                </QuestionCointainer>
                 
-                
-            </TestContainer>
-            <div style={{display:"flex"}}>
-                    <Button onClick="/" size="large" variant="contained" style={{width: "100%"}}>
+                <div style={{display:"flex"}}>
+                    <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
                         Next
                     </Button>
-            </div>
-        </Container>
+                </div>
+                
+            </TestContainer>
     );
 }
