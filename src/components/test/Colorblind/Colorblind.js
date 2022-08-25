@@ -16,31 +16,26 @@ const Colorblind = (props) => {
     const [questionStatus, setQuestionStatus] = useState(false);
     const inputRef = useRef(null);
 
-    console.log(props.data);
+    // console.log(props.data);
 
-    function checkVision(inputText, targetText) {
-        console.log(inputText, targetText.normalView);
-        let data = []
-        let vision = targetText;
-            
-            if (inputText == vision.normalView){
-                console.log(inputText, targetText.normalView);
-                data.push(["normal vision", vision.normalView]);
-            }else{
-                let colorblindVision = vision.colorBlind
+    const checkVision = (inputText, targetText) => {
 
-                console.log(colorblindVision);
+        const org_data = props.data.vision
+        inputText = Number(inputText)
 
-                if (inputText == colorblindVision.RG){
-                    data.push(["color blind", colorblindVision.RG])
-                }else if (inputText == colorblindVision.protonopia){
-                    data.push(["color blind", colorblindVision.protonopia])
-                }else if (inputText == colorblindVision.deutonopia){
-                    data.push(["color blind", colorblindVision.deutonopia])
+        props.saveData("questions", {
+            [props.index]: {
+                ...props.data,
+                userResponse: inputText,
+                isUserResponseValid: {
+                    RG: org_data.normalView === inputText ? false : org_data.colorBlind.RG === inputText,
+                    protonopia: org_data.normalView === inputText ? false : org_data.colorBlind.protonopia === inputText,
+                    deutonopia: org_data.normalView === inputText ? false : org_data.colorBlind.deutonopia === inputText,
                 }
             }
+        })
 
-        return data
+        props.onSubmit()
     }
 
     const handleAnswerCheck = () => {
@@ -49,30 +44,32 @@ const Colorblind = (props) => {
 
         const result = checkVision(inputText, targetText);
 
-        alert(inputText == result[0][1]);
         setQuestionStatus(inputText == targetText)
     }
-
-    //fixed multiple rerendering issues
-    // useEffect(()=>{
-    //     const id = setTimeout(()=>{
-    //         handlePlayAudio();
-    //         console.log("hero")
-    //     },300);
-    //     console.log("heroo")
-
-    //     return () => clearTimeout(id)
-    // },[props.data])
 
     return (
         <article className={styles.container}>
             <section>
-                <img className={styles.ishihara_image} src={props.data.image} alt="ishihara image"/>
+                <center style={{marginTop: "32px",marginBottom: "32px"}}> 
+                    <img className={styles.ishihara_image} src={props.data.image} alt="ishihara image"/>    
+                </center>
             </section>
+
             <section className={styles.answer_section}>
                 <h3>Answer:</h3>
                 <TextField type="number" inputRef={inputRef}/>
-                <Button variant="contained" onClick={handleAnswerCheck} title="Check Answer"> Capture </Button>
+                <br />
+
+                <center style={{margin: "24px", paddingLeft:"auto", paddingRight:"auto"}}>
+                    <Button
+                        className='btn btn-secondary'
+                        onClick={handleAnswerCheck}
+                        variant="contained" style={{ paddingLeft:"auto", paddingRight:"auto"}}
+                    >
+                        Done
+                    </Button>
+                </center>
+                {/* <Button className='btn btn-secondary' variant="contained" onClick={handleAnswerCheck} title="Check Answer"> Capture </Button> */}
             </section>
             <section className="next_btn_container">
                 <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
