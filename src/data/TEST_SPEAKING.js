@@ -1,6 +1,6 @@
 const TEST_LISTENING = {
     details: {
-        name: 'Speeking',
+        name: 'Speeking Assesment',
     },
     questions: {
         easy: [

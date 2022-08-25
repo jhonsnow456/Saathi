@@ -1,6 +1,6 @@
 const TEST_HANDWRITING = {
     details: {
-        name: 'handwriting'
+        name: 'Writing Assesment'
     },
     questions: [
     {
