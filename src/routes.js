@@ -23,6 +23,7 @@ import Speaking from './components/test/Speaking/speech-to-text';
 import Profile from "./pages/profile/Profile";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
+import TEST_HANDWRITING from "./data/TEST_HANDWRITING";
 
 // ----------------------------------------------------------------------
 
@@ -42,7 +43,7 @@ export default function Router(props) {
         { path: "test/new", element: <TestOnboarding />},
         { path: "test/speech", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={SpeechTest}/>   },
         { path: "test/color-blindness", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={Colorblind}/> },
-        { path: "test/writing", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={Handwriting}/> },
+        { path: "test/writing", element: <TestMaker details={TEST_HANDWRITING.details} questions={TEST_HANDWRITING.questions} testComponent={Handwriting}/> },
         { path: "test/listening", element: <TestMaker details={TEST_LISTENING.details} questions={TEST_LISTENING.questions.easy} testComponent={Listening}/> },
         { path: "upload", element: <Upload />  },
         { path: "report/:id", element: <DashboardApp />  },

@@ -44,11 +44,11 @@ const Colorblind = (props) => {
                 <TextField type="number" ref={inputRef}/>
                 <Button onClick={handleAnswerCheck} title="Check Answer"/>
             </section>
-            <div style={{display:"flex"}}>
-                <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
+            <section className="next_btn_container">
+                <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
                     Next
                 </Button>
-            </div>
+            </section>
         </article>
     )
 }
