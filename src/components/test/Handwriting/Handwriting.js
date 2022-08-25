@@ -43,7 +43,7 @@ const Handwriting = (props) => {
         setUploading(false);
     }
 
-    function dataURLtoFile(dataurl, filename) {
+    const dataURLtoFile = (dataurl, filename) => {
  
         let arr = dataurl.split(','),
             mime = arr[0].match(/:(.*?);/)[1],
