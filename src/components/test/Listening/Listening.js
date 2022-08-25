@@ -7,15 +7,16 @@ import { styled } from '@mui/material/styles';
 import speakerIcon from '../../../assets/icon_audio.png'
 import styles from './Listening.module.css'
 
+const synth = window.speechSynthesis;
+
+const handlePlayAudio = (message) => {
+    const utterThis = new SpeechSynthesisUtterance(message);
+    utterThis.rate = 0.4;
+    synth.speak(utterThis)
+}
+
 const Listening = (props) => {
     const inputRef = useRef(null);
-
-    const handlePlayAudio = () => {
-        const synth = window.speechSynthesis;
-        const text = props.data.title
-        const utterThis = new SpeechSynthesisUtterance(text);
-        synth.speak(utterThis)
-    }
 
     const handleAnswerCheck = () => {
         const inputText = inputRef.current.value?.toLowerCase()
@@ -42,10 +43,23 @@ const Listening = (props) => {
     //fixed multiple rerendering issues
     useEffect(()=>{
         const id = setTimeout(()=>{
-            handlePlayAudio();
+            handlePlayAudio(props.data.title);
         },300);
 
-        return () => clearTimeout(id)
+        const id2 = setInterval(()=>{
+            if(!synth.speaking){
+                setTimeout(()=>{
+                    console.log('instruction started playing')
+                    handlePlayAudio(props.data.instruction);
+                },900)
+                clearInterval(id2)
+            }
+        },301)
+
+        return () => {
+            clearTimeout(id);
+            clearInterval(id2);
+        }
     },[props.data])
 
     return (
@@ -69,3 +83,4 @@ const Listening = (props) => {
 }
 
 export default Listening
+export {handlePlayAudio}
