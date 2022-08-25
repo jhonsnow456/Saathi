@@ -58,7 +58,7 @@ const Handwriting = (props) => {
         return new File([u8arr], filename, {type:mime});
     }
 
-    function upload() {
+    const upload = () => {
         const key = inputKey + '.jpg';
         const file = dataURLtoFile(imgSrc, key)
 
@@ -74,11 +74,28 @@ const Handwriting = (props) => {
                 {(props.data.image === "") ? "" : <img className={styles.handwriting_image} src={props.data.image} alt="handwriting image"/>}
             </section>
             <section>
-                <Webcam className={styles.handwriting_image} audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
+                <center style={{marginTop: "32px",marginBottom: "32px"}}>
+                    <Webcam className={styles.handwriting_image} audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
+                </ center>
             </section>
             <section className={styles.answer_section}>
-                <Button  variant="contained" title="capture photo" onClick={capture} > Capture </ Button>
-                <Button  variant="contained" title="Upload" onClick={upload}> Upload </ Button>
+                <center style={{margin: "24px", paddingLeft:"auto", paddingRight:"auto"}}>
+                    <Button
+                        className='btn btn-secondary'
+                        onClick={capture}
+                        variant="contained" style={{ paddingLeft:"auto", paddingRight:"auto"}}
+                    >
+                        Capture
+                    </Button>
+
+                    <Button
+                        className='btn btn-secondary'
+                        onClick={upload}
+                        variant="contained" style={{ paddingLeft:"auto", paddingRight:"auto"}}
+                    >
+                        Upload
+                    </Button>
+                </center>
             </section>
             <section className="next_btn_container">
                 <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
