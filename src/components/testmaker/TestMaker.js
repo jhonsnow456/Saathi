@@ -22,6 +22,7 @@ const QuestionTemplateContainer = styled('div')(({ theme }) => ({
     display: "flex",
     height: "30vh",
     padding: "8px",
+    paddingLeft: "0px"
 }));
 
 const ComponentContainer = styled('div')(({ theme }) => ({
@@ -76,7 +77,6 @@ const TestMaker = (props) => {
         const updated_data = { ...old_data, [key]: { ...old_data[key], ...new_data } };
         storeData(props.details.name, updated_data);
 
-        console.log("Saved Data",updated_data)
     }
 
     return (
