@@ -10,10 +10,9 @@
 .answer_section {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    margin-top: 14px;
 }
-.answer_section input {
-    border-radius: 4px;
-    margin-bottom: 6px;
-    border: none;
-    padding: 6px 10px;
+.answer_section button {
+    margin-top: 3px;
 }
