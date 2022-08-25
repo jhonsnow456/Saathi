@@ -7,6 +7,10 @@
   /* background-color: #77dd77; */
 }
 
+.instruction {
+  color: red;
+}
+
 .answer_section {
   display: flex;
   flex-direction: column;

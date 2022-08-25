@@ -1,15 +1,9 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {
-    Card,
     Button,
-    Stack,
     TextField,
-    IconButton,
-    InputAdornment,
-    MenuItem,
   } from "@mui/material";
 import { styled } from '@mui/material/styles';
-// import speakerIcon from '../../assets/icon_audio.png'
 import styles from './Colorblind.module.css'
 
 const Colorblind = (props) => {
@@ -42,7 +36,9 @@ const Colorblind = (props) => {
         const inputText = inputRef.current.value
         const targetText = props.data.vision
 
-        const result = checkVision(inputText, targetText);
+        checkVision(inputText, targetText);
+
+        inputRef.current.value = ""
 
         setQuestionStatus(inputText == targetText)
     }
@@ -57,6 +53,7 @@ const Colorblind = (props) => {
 
             <section className={styles.answer_section}>
                 <h3>Answer:</h3>
+                <p className={styles.instruction}> <strong>Instruction:</strong> {props.data.instruction} </p>
                 <TextField type="number" inputRef={inputRef}/>
                 <br />
 
