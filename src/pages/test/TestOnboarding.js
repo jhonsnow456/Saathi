@@ -4,11 +4,12 @@ import { Icon } from "@iconify/react";
 import { useFormik, Form, FormikProvider } from "formik";
 import eyeFill from "@iconify/icons-eva/eye-fill";
 import eyeOffFill from "@iconify/icons-eva/eye-off-fill";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 // material
 import {
   Stack,
   TextField,
+  Button,
   IconButton,
   InputAdornment,
   MenuItem,
@@ -30,6 +31,7 @@ const testId = generateRandomNumber();
 export default function RegisterForm() {
   const navigate = useNavigate();
 
+
   useEffect(() => {
     // var requestOptions = {
     //   method: "GET",
@@ -47,7 +49,7 @@ export default function RegisterForm() {
   }, []);
 
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string()
+    name: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("First name required"),
@@ -61,7 +63,6 @@ export default function RegisterForm() {
   const formik = useFormik({
     initialValues: {
       name: "",
-      email: "",
       dateOfBirth: "",
       gender: "",
       age: "",
@@ -71,24 +72,31 @@ export default function RegisterForm() {
     onSubmit: () => {
       console.log(values);
       var formdata = new FormData();
-      // formdata.append("profilePicture", profilePic);
-      formdata.append("firstName", values.firstName);
-      formdata.append("lastName", values.lastName);
-      formdata.append("email", values.email);
+      formdata.append("name", values.name);
       formdata.append("dateOfBirth", values.dateOfBirth);
-      formdata.append("mobileNo", values.mobileNo);
       formdata.append("gender", values.gender);
       formdata.append("age", values.gender);
       formdata.append("grade", values.grade);
 
-      swal({
-        title: "Your Test Id is " + testId,
-        icon: "success",
-        closeOnClickOutside: false,
-        buttons: false,
-        className: "pb-5",
-        timer: 5000,
-      })
+      localStorage.setItem("testid", testId);
+      localStorage.setItem("name", values.name);
+      localStorage.setItem("dateofbirth", values.dateOfBirth);
+      localStorage.setItem("gender", values.gender);
+      localStorage.setItem("age", values.age);
+      localStorage.setItem("grade", values.grade);
+      
+      navigate("/test/listening", { replace: true });
+
+
+      // swal({
+      //   title: "Your Test Id is " + testId,
+      //   icon: "success",
+      //   closeOnClickOutside: false,
+      //   buttons: false,
+      //   className: "pb-5",
+      //   timer: 5000,
+      // })
+
 
       // fetch(
       //   process.env.REACT_APP_BACKEND_SERVER_HOST_URL +
@@ -123,7 +131,7 @@ export default function RegisterForm() {
             <TextField
               fullWidth
               label="Name"
-              {...getFieldProps("firstName")}
+              {...getFieldProps("name")}
               error={Boolean(touched.firstName && errors.firstName)}
               helperText={touched.firstName && errors.firstName}
             />
@@ -171,15 +179,15 @@ export default function RegisterForm() {
             </TextField>
 
           </Stack>
-          
-          <LoadingButton
+
+          <Button
             fullWidth
             size="large"
-            type="submit"
+            type="submit" 
             variant="contained"
           >
             Start
-          </LoadingButton>
+          </Button>
         </Stack>
       </Form>
     </FormikProvider>

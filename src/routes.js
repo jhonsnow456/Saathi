@@ -12,6 +12,8 @@ import NotFound from './pages/Page404';
 
 import TestMaker from "./components/testmaker/TestMaker";
 import Upload from "./utils/azurefileupload/App.js";
+
+import TEST_SPEAKING from './data/TEST_SPEAKING';
 import TEST_LISTENING from './data/TEST_LISTENING';
 import TEST_ISHIHARA from './data/TEST_ISHIHARA';
 
@@ -41,7 +43,7 @@ export default function Router(props) {
           element: <Profile /> ,
         },
         { path: "test/new", element: <TestOnboarding />},
-        { path: "test/speech", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={SpeechTest}/>   },
+        { path: "test/speech", element: <TestMaker details={TEST_SPEAKING.details} questions={TEST_SPEAKING.questions} testComponent={SpeechTest}/>   },
         { path: "test/color-blindness", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={Colorblind}/> },
         { path: "test/writing", element: <TestMaker details={TEST_HANDWRITING.details} questions={TEST_HANDWRITING.questions} testComponent={Handwriting}/> },
         { path: "test/listening", element: <TestMaker details={TEST_LISTENING.details} questions={TEST_LISTENING.questions.easy} testComponent={Listening}/> },
@@ -50,7 +52,7 @@ export default function Router(props) {
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: '404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/app"/> },
+        { path: '*', element: <Navigate to="/test/new"/> },
       ],
     },
   ]);
