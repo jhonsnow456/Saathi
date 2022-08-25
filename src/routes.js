@@ -6,6 +6,7 @@ import LogoOnlyLayout from "./layouts/LogoOnlyLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import DashboardApp from "./pages/DashboardApp";
+import Report from "./pages/report/Report";
 import TestOnboarding from "./pages/test/TestOnboarding.js";
 import SpeechTest from "./components/test/Speaking/SpeechTest.js";
 import NotFound from './pages/Page404';
@@ -48,7 +49,7 @@ export default function Router(props) {
         { path: "test/writing", element: <TestMaker details={TEST_HANDWRITING.details} questions={TEST_HANDWRITING.questions} testComponent={Handwriting}/> },
         { path: "test/listening", element: <TestMaker details={TEST_LISTENING.details} questions={TEST_LISTENING.questions.easy} testComponent={Listening}/> },
         { path: "upload", element: <Upload />  },
-        { path: "report/:id", element: <DashboardApp />  },
+        { path: "report", element: <Report />  },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: '404', element: <NotFound /> },

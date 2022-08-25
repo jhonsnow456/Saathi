@@ -5,7 +5,7 @@ import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
 // components
 import ScrollToTop from './components/ScrollToTop';
-import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
+import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 //css
 
 

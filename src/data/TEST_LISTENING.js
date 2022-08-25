@@ -5,7 +5,7 @@ const TEST_LISTENING = {
     questions: {
         easy: [
             {
-                title: 'Speak ',
+                title: 'One',
                 answer: 'one',
             },
             {
