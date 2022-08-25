@@ -13,9 +13,9 @@ const getIndianVoices = () => {
     return synth.getVoices().filter(data => data.lang.includes("IN"))
 }
 
-const handlePlayAudio = (message) => {
+const handlePlayAudio = (message, speed = 0.7) => {
     const utterThis = new SpeechSynthesisUtterance(message);
-    utterThis.rate = 0.7;
+    utterThis.rate = speed;
     utterThis.voice = getIndianVoices().filter(val => val.name === "Rishi")[0]
     synth.speak(utterThis)
 }
@@ -44,12 +44,13 @@ const Listening = (props) => {
 
         props.onSubmit()
     }
-    console.log(synth.getVoices(),getIndianVoices())
+    // console.log(synth.getVoices(),getIndianVoices())
 
     //fixed multiple rerendering issues
     useEffect(()=>{
         const id = setTimeout(()=>{
-            handlePlayAudio(props.data.title);
+            if(props.data?.speed) handlePlayAudio(props.data.title, props.data.speed);
+            else handlePlayAudio(props.data.title);
         },300);
 
         const id2 = setInterval(()=>{
@@ -68,10 +69,15 @@ const Listening = (props) => {
         }
     },[props.data])
 
+    const playAudioAgain = ()=>{
+        if(props.data?.speed) handlePlayAudio(props.data.title, props.data.speed);
+        else handlePlayAudio(props.data.title);
+    }
+
     return (
         <article className={styles.container}>
             <section>
-                <Button onClick={() => handlePlayAudio(props.data.title)}>
+                <Button onClick={playAudioAgain}>
                     <img className={styles.speaker_icon} src={speakerIcon} alt="speaker icon"/>
                 </Button>
             </section>
