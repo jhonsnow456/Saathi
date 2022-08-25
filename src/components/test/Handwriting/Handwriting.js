@@ -71,7 +71,10 @@ const Handwriting = (props) => {
         <article className={styles.container}>
             <section>
                 <h3>{props.data.question}</h3>
-                {(props.data.image === "") ? "" : <img className={styles.handwriting_image} src={props.data.image} alt="handwriting image"/>}
+                {
+                    (props.data.image === "") ? "" : 
+                        <center> <img className={styles.handwriting_image} src={props.data.image} alt="handwriting image"/> </center>
+                    }
             </section>
             <section>
                 <center style={{marginTop: "32px",marginBottom: "32px"}}>
