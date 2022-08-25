@@ -9,9 +9,14 @@ import styles from './Listening.module.css'
 
 const synth = window.speechSynthesis;
 
+const getIndianVoices = () => {
+    return synth.getVoices().filter(data => data.lang.includes("IN"))
+}
+
 const handlePlayAudio = (message) => {
     const utterThis = new SpeechSynthesisUtterance(message);
-    utterThis.rate = 0.4;
+    utterThis.rate = 0.7;
+    utterThis.voice = getIndianVoices().filter(val => val.name === "Rishi")[0]
     synth.speak(utterThis)
 }
 
@@ -39,6 +44,7 @@ const Listening = (props) => {
 
         props.onSubmit()
     }
+    console.log(synth.getVoices(),getIndianVoices())
 
     //fixed multiple rerendering issues
     useEffect(()=>{
@@ -65,7 +71,7 @@ const Listening = (props) => {
     return (
         <article className={styles.container}>
             <section>
-                <Button onClick={handlePlayAudio}>
+                <Button onClick={() => handlePlayAudio(props.data.title)}>
                     <img className={styles.speaker_icon} src={speakerIcon} alt="speaker icon"/>
                 </Button>
             </section>
