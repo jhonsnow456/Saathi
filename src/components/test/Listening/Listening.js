@@ -7,48 +7,80 @@ import { styled } from '@mui/material/styles';
 import speakerIcon from '../../../assets/icon_audio.png'
 import styles from './Listening.module.css'
 
-const Listening = (props) => {
-    const [questionStatus, setQuestionStatus] = useState(false);
-    const inputRef = useRef(null);
+const synth = window.speechSynthesis;
 
-    const handlePlayAudio = () => {
-        const synth = window.speechSynthesis;
-        const text = props.data.title
-        const utterThis = new SpeechSynthesisUtterance(text);
-        synth.speak(utterThis)
-    }
+const getIndianVoices = () => {
+    return synth.getVoices().filter(data => data.lang.includes("IN"))
+}
+
+const handlePlayAudio = (message) => {
+    const utterThis = new SpeechSynthesisUtterance(message);
+    utterThis.rate = 0.7;
+    utterThis.voice = getIndianVoices().filter(val => val.name === "Rishi")[0]
+    synth.speak(utterThis)
+}
+
+const Listening = (props) => {
+    const inputRef = useRef(null);
 
     const handleAnswerCheck = () => {
         const inputText = inputRef.current.value?.toLowerCase()
-        const targetText = props.data.title.toLowerCase()
-        setQuestionStatus(inputText == targetText)
+        const targetText = props.data.answer.toLowerCase()
+        return inputText === targetText
     }
+
+    const handleSubmit = ()=>{
+        props.saveData("questions", {
+            [props.index]: {
+                ...props.data,
+                userResponse: inputRef.current.value?.toLowerCase(),
+                isUserResponseValid: handleAnswerCheck()
+            }
+        })
+
+        //clear text field
+        console.log(inputRef.current.value)
+        inputRef.current.value = ""
+
+        props.onSubmit()
+    }
+    console.log(synth.getVoices(),getIndianVoices())
 
     //fixed multiple rerendering issues
     useEffect(()=>{
         const id = setTimeout(()=>{
-            handlePlayAudio();
-            console.log("hero")
+            handlePlayAudio(props.data.title);
         },300);
-        console.log("heroo")
 
-        return () => clearTimeout(id)
+        const id2 = setInterval(()=>{
+            if(!synth.speaking){
+                setTimeout(()=>{
+                    console.log('instruction started playing')
+                    handlePlayAudio(props.data.instruction);
+                },900)
+                clearInterval(id2)
+            }
+        },301)
+
+        return () => {
+            clearTimeout(id);
+            clearInterval(id2);
+        }
     },[props.data])
 
     return (
         <article className={styles.container}>
             <section>
-                <Button onClick={handlePlayAudio}>
+                <Button onClick={() => handlePlayAudio(props.data.title)}>
                     <img className={styles.speaker_icon} src={speakerIcon} alt="speaker icon"/>
                 </Button>
             </section>
             <section className={styles.answer_section}>
                 <h3>Answer:</h3>
-                <TextField type="text" ref={inputRef}/>
-                <Button onClick={handleAnswerCheck}>Check Answer</Button>
+                <TextField type="text" inputRef={inputRef}/>
             </section>
             <section className="next_btn_container">
-                <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
+                <Button title="Submit" onClick={handleSubmit} variant="contained" size='large'>
                     Next
                 </Button>
             </section>
@@ -57,3 +89,4 @@ const Listening = (props) => {
 }
 
 export default Listening
+export {handlePlayAudio}

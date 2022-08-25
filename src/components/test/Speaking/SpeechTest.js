@@ -2,6 +2,8 @@ import React from "react";
 import MicRecorder from "mic-recorder-to-mp3"
 import { useEffect, useState, useRef } from "react"
 import { Oval } from "react-loader-spinner"
+import Path from 'path';
+import uploadFileToBlob from './../../../utils/azurefileupload/azure-storage-blob.js';
 import axios from "axios"
 // material
 import {
@@ -12,6 +14,10 @@ import { styled } from '@mui/material/styles';
 import {
   Container,
 } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+
 import { sizing } from '@mui/system';
 
 // components
@@ -78,6 +84,16 @@ export default function SpeechTest(props) {
   const [transcript, setTranscript] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  // all blobs in container
+  const [blobList, setBlobList] = useState([]);
+
+  // current file to upload into container
+  const [fileSelected, setFileSelected] = useState(null);
+
+  // UI/form management
+  const [uploading, setUploading] = useState(false);
+  const [inputKey, setInputKey] = useState(Math.random().toString(36));
+
   useEffect(() => {
     //Declares the recorder object and stores it inside of ref
     recorder.current = new MicRecorder({ bitRate: 128 })
@@ -102,11 +118,11 @@ export default function SpeechTest(props) {
         const newBlobUrl = URL.createObjectURL(blob)
         setBlobUrl(newBlobUrl)
         setIsRecording(false)
+        onFileUpload(file);
         setAudioFile(file)
       })
       .catch((e) => console.log(e))
   }
-
 
 
   // Upload the Audio File and retrieve the Upload URL
@@ -117,6 +133,7 @@ export default function SpeechTest(props) {
           .then((res) => {        console.log(res);
             setUploadURL(res.data.upload_url)})
         .catch((err) => console.error(err))
+
     }
   }, [audioFile])
 
@@ -163,60 +180,95 @@ export default function SpeechTest(props) {
   })
 
 
+  // const onFileChange = (event) => {
+  //   // capture file into state
+  //   setFileSelected(event.target.files[0]);
+  // };
+
+  const onFileUpload = async (file) => {
+    // prepare UI
+    setUploading(true);
+
+    // *** UPLOAD TO AZURE STORAGE ***
+    const blobsInContainer = await uploadFileToBlob(file);
+
+    // prepare UI for results
+    setBlobList(blobsInContainer);
+
+    // reset state/form
+    setFileSelected(null);
+    setUploading(false);
+    setInputKey(Math.random().toString(36));
+  };
+
 
     return (
             <TestContainer>
                 <QuestionCointainer style={{display:"flex", flexDirection:"column"}}>
-                    <div>
-                      <button
-                        className='btn btn-primary'
-                        onClick={startRecording}
-                        disabled={isRecording}
-                      >
-                        Record
-                      </button>
-                      <button
-                        className='btn btn-warning'
-                        onClick={stopRecording}
-                        disabled={!isRecording}
-                      >
-                        Stop
-                      </button>
+                    <center>
+        
+                    </center>
+
+                    <div style={{display:"flex", justifyContent:"space-around"}}>
+                      {(!isRecording)
+                      ? (<IconButton onClick={startRecording} disabled={isRecording} aria-label="record" size="medium" color="success">
+                            <PlayCircleOutlineIcon />
+                              Record
+                        </IconButton>)
+                      : (<IconButton onClick={stopRecording} disabled={!isRecording} aria-label="pause" size="large" color="primary">
+                          <PauseCircleOutlineIcon />
+                            Stop
+                          </IconButton>)
+                      }
                     </div>
+                    <center style={{marginTop: "32px",marginBottom: "32px"}}>
+                      <audio ref={audioPlayer} src={blobURL} controls='controls' />
+                    </center>
 
-                    <audio ref={audioPlayer} src={blobURL} controls='controls' />
+                    <center style={{margin: "24px", paddingLeft:"auto", paddingRight:"auto"}}>
+                      <Button
+                        className='btn btn-secondary'
+                        onClick={submitTranscriptionHandler}
+                        variant="contained" style={{ paddingLeft:"auto", paddingRight:"auto"}}
+                      >
+                        Done
+                      </Button>
+                    </center>
 
-                    <button
-                      className='btn btn-secondary'
-                      onClick={submitTranscriptionHandler}
-                    >
-                      Done
-                    </button>
+                <center>
+                  {isLoading ? (
+                    <div>
+                      <Oval
+                        ariaLabel='loading-indicator'
+                        height={100}
+                        width={100}
+                        strokeWidth={5}
+                        color='red'
+                        secondaryColor='yellow'
+                      />
+                      <p className='text-center'>Wait we analyzing....</p>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                  {!isLoading && transcript && (
+                    <div className='w-2/3 lg:w-1/3 mockup-code'>
+                      <p className='p-6'>{transcript}</p>
+                    </div>
+                  )}
+                </center>
 
-                    {isLoading ? (
-                      <div>
-                        <Oval
-                          ariaLabel='loading-indicator'
-                          height={100}
-                          width={100}
-                          strokeWidth={5}
-                          color='red'
-                          secondaryColor='yellow'
-                        />
-                        <p className='text-center'>Is loading....</p>
-                      </div>
-                    ) : (
-                      <div></div>
-                    )}
-                    {!isLoading && transcript && (
-                      <div className='w-2/3 lg:w-1/3 mockup-code'>
-                        <p className='p-6'>{transcript}</p>
-                      </div>
-                    )}
+                    
 
                   
                 </QuestionCointainer>
                 
+                <center>
+                  {!uploading}
+                  {uploading && <div>Saving your answer! Wait a minute!</div>}
+                  {uploading && <div>Your response has been saved.</div>}
+                </center>
+
                 <div style={{display:"flex"}}>
                     <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
                         Next
