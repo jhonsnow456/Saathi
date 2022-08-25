@@ -202,41 +202,16 @@ export default function SpeechTest(props) {
   };
 
 
-  // display file name and image
-  const DisplayImagesFromContainer = () => (
-    <div>
-      <h2>Container items</h2>
-      <ul>
-        {blobList.map((item) => {
-          return (
-            <li key={item}>
-              <div>
-                {Path.basename(item)}
-                <br />
-                <img src={item} alt={item} height="200" />
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-
-  const styles = {
-
-    largeIcon: {
-      width: 60,
-      height: 60,
-    },
-  
-  };
-
     return (
             <TestContainer>
                 <QuestionCointainer style={{display:"flex", flexDirection:"column"}}>
+                    <center>
+        
+                    </center>
+
                     <div style={{display:"flex", justifyContent:"space-around"}}>
                       {(!isRecording)
-                      ? (<IconButton onClick={startRecording} disabled={isRecording} aria-label="record" iconStyle={styles.largeIcon} size="medium" color="success">
+                      ? (<IconButton onClick={startRecording} disabled={isRecording} aria-label="record" size="medium" color="success">
                             <PlayCircleOutlineIcon />
                               Record
                         </IconButton>)

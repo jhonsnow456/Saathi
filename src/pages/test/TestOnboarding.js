@@ -53,7 +53,6 @@ export default function RegisterForm() {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("First name required"),
-    dateOfBirth: Yup.date().required("Date of Birth required"),
     gender: Yup.string().required("Gender is required"),
     age: Yup.string().required("Age is required"),
     grade: Yup.string().required("Grade is required"),
@@ -80,7 +79,6 @@ export default function RegisterForm() {
 
       localStorage.setItem("testid", testId);
       localStorage.setItem("name", values.name);
-      localStorage.setItem("dateofbirth", values.dateOfBirth);
       localStorage.setItem("gender", values.gender);
       localStorage.setItem("age", values.age);
       localStorage.setItem("grade", values.grade);
@@ -150,17 +148,6 @@ export default function RegisterForm() {
               {...getFieldProps("grade")}
               error={Boolean(touched.firstName && errors.firstName)}
               helperText={touched.firstName && errors.firstName}
-            />
-          </Stack>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-            <TextField
-              fullWidth
-              type="date"
-              label="Date of Birth"
-              InputLabelProps={{ shrink: true }}
-              {...getFieldProps("dateOfBirth")}
-              error={Boolean(touched.dateOfBirth && errors.dateOfBirth)}
-              helperText={touched.dateOfBirth && errors.dateOfBirth}
             />
           </Stack>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>

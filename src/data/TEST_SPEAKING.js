@@ -5,35 +5,135 @@ const TEST_LISTENING = {
     questions: {
         easy: [
             {
-                title: 'one',
-                answer: 'one',
+                question: 'Read the word "Cat" loudly!',
+                answer: 'cat',
                 ageMin: 5,
                 ageMax: 15
             },
             {
-                title: 'two',
-                answer: 'two',
+                question: 'Read the word "Mat" loudly!',
+                answer: 'Mat',
                 ageMin: 5,
                 ageMax: 15
             },
             {
-                title: 'three',
-                answer: 'three',
+                question: 'Read the word "Fat" loudly!',
+                answer: 'Fat',
                 ageMin: 5,
                 ageMax: 15
             },
             {
-                title: 'I am living in bangalore since my childhood',
-                answer: 'I am living in bangalore since my childhood',
+                question: 'Say "cat" without the /c/ sound.',
+                answer: 'at',
                 ageMin: 5,
                 ageMax: 15
             },
             {
-                title: 'We are valorant. we are the best',
-                answer: 'We are valorant we are the best',
+                question: 'Say "mat" without the /m/ sound.',
+                answer: 'at',
                 ageMin: 5,
                 ageMax: 15
             },
+            {
+                question: 'Say "fat" without the /f/ sound',
+                answer: 'at',
+                ageMin: 5,
+                ageMax: 15
+            },
+            ,
+            {
+                question: 'What sounds do you hear in "hot?"',
+                answer: '/h/ – /o/ – /t/',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What word do these sounds make? /h/ – /o/ – /t/ ',
+                answer: 'hot',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What word do these sounds make? /t/ – /o/ – /p/ ',
+                answer: 'top',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What word do these sounds make? /c/ – /a/ – /t/ ',
+                answer: 'cat',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What is the first sound in "sat?" ',
+                answer: '/s/',
+                ageMin: 5,
+                ageMax: 15
+            },{
+                question: 'What is the middle sound in "sat?" ',
+                answer: '/a/',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What is the last sound in "sat?" ',
+                answer: '/t/',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What is the middle sound in "sat?" ',
+                answer: 'Fat',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'What is the middle sound in "sat?" ',
+                answer: 'Fat',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'Read the word "Notebook" without saying "book"',
+                answer: 'Note',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'Read the word "Superman" without saying "super"',
+                answer: 'man',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'Read the word "Bookstore" without saying "store"',
+                answer: 'store',
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'Max reads more than anyone he knows. He loves to read during all of his free time. His friends tease him because he would rather read than play video games, but his parents and his teachers are proud of him. They say reading is important, and it will help him learn about the world around him. They also tell him it is a good habit to read on a regular basis.',
+                answer: 'Max reads more than anyone he knows. He loves to read during all of his free time. His friends tease him because he would rather read than play video games, but his parents and his teachers are proud of him. They say reading is important, and it will help him learn about the world around him. They also tell him it is a good habit to read on a regular basis.',
+                gradeMin:3,
+                gradeMax:5,
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'One day Max was reading a magazine article about volcanoes. He told his friends all about volcanoes and what causes them to erupt. The very next week, his class was assigned a science project about volcanoes. Guess who everyone wanted in their project group? Max’s friends weren’t teasing him anymore.',
+                answer: 'One day Max was reading a magazine article about volcanoes. He told his friends all about volcanoes and what causes them to erupt. The very next week, his class was assigned a science project about volcanoes. Guess who everyone wanted in their project group? Max’s friends weren’t teasing him anymore.',
+                gradeMin:3,
+                gradeMax:5,
+                ageMin: 5,
+                ageMax: 15
+            },
+            {
+                question: 'Read the word "Bookstore" without saying "Book"',
+                answer: 'store',
+                ageMin: 5,
+                ageMax: 15
+            }
         ]
     }
 }
