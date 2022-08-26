@@ -22,24 +22,12 @@ export default function AccountPopover() {
   const navigate = useNavigate();
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
-
-  const MENU_OPTIONS = [
-    {
-      label: 'Home',
-      icon: homeFill,
-      linkTo: localStorage.role === 'ADMIN'?'/dashboard/app':`/page/user/${window.btoa(localStorage.getItem('email'))}`
-    },
-    {
-      label: 'Profile',
-      icon: personFill,
-      linkTo: `/dashboard/user/${window.btoa(localStorage.getItem('email'))}`
-    },
     // {
     //   label: 'Settings',
     //   icon: settings2Fill,
     //   linkTo: '#'
     // }
-  ];
+  
 
   const handleOpen = () => {
     setOpen(true);
@@ -87,45 +75,15 @@ export default function AccountPopover() {
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle1" noWrap>
             {/* {account.displayName} */}
-            {localStorage.getItem('firstName')+" "+localStorage.getItem('lastName')}
+            {localStorage.getItem('name') || "Please take test"}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {localStorage.getItem('email')}
-          </Typography>
-          <Typography noWrap>
-          <Icon icon="ant-design:star-filled" color="#faaf00" width="20"/>{localStorage.getItem('rating')}
+            {localStorage.getItem('age')}
           </Typography>
         </Box>
 
         <Divider sx={{ my: 1 }} />
 
-        {MENU_OPTIONS.map((option) => (
-          <MenuItem
-            key={option.label}
-            to={option.linkTo}
-            component={RouterLink}
-            onClick={handleClose}
-            sx={{ typography: 'body2', py: 1, px: 2.5 }}
-          >
-            <Box
-              component={Icon}
-              icon={option.icon}
-              sx={{
-                mr: 2,
-                width: 24,
-                height: 24
-              }}
-            />
-
-            {option.label}
-          </MenuItem>
-        ))}
-
-        <Box sx={{ p: 2, pt: 1.5 }}>
-          <Button fullWidth color="inherit" variant="outlined" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Box>
       </MenuPopover>
     </>
   );
