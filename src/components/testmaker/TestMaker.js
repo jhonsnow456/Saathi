@@ -91,7 +91,7 @@ const TestMaker = (props) => {
 
     return (
         <>
-            <div style={{position:'absolute', zIndex:200}}>
+            <div style={{position:'absolute',left:0, zIndex:200, width:'100vw'}}>
                 {animationCounter && <Lottie options={defaultOptions}
                     height={400}
                     width={390}

@@ -31,6 +31,7 @@ import UploadFiles from "./components/test/uploads/Uploadfiles";
 // import Profile from "./pages/profile/Profile";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
+import GetReport from "./pages/GetReport";
 
 // ----------------------------------------------------------------------
 
@@ -56,6 +57,7 @@ export default function Router(props) {
         { path: "test/uploads", element: <TestMaker details={TEST_UPLOADS.details} questions={TEST_UPLOADS.questions} testComponent={UploadFiles}/> },
         { path: "upload", element: <Upload />  },
         { path: "report", element: <Report />  },
+        { path: "fetch-report", element: <GetReport />  },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: '404', element: <NotFound /> },

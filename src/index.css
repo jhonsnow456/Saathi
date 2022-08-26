@@ -29,7 +29,7 @@
   }
 
 .next_btn_container {
-    position: fixed;
+    position: absolute;
     box-sizing: border-box;
     padding: 15px 20px;
     bottom: 0;
