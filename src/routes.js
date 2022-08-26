@@ -18,7 +18,7 @@ import TEST_SPEAKING from './data/TEST_SPEAKING';
 import TEST_LISTENING from './data/TEST_LISTENING';
 import TEST_ISHIHARA from './data/TEST_ISHIHARA';
 
-import TEST_DYSCALCULIA from './data/TEST_DYSCALCULIA';
+import { TEST_DYSCALCULIA } from './data/TEST_DYSCALCULIA';
 import TEST_UPLOADVEDIO from './data/TEST_UPLOADVEDIO';
 
 import Listening from './components/test/Listening/Listening';
