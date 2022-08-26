@@ -1,6 +1,7 @@
 const TEST_HANDWRITING = {
     details: {
         name: 'Historical Uploads',
+        next_test: '/test/listening/'
     },
     questions: [
     {

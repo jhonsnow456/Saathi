@@ -99,7 +99,7 @@ export default function RegisterForm() {
       localStorage.setItem("age", values.age);
       localStorage.setItem("grade", values.grade);
       
-      navigate("/test/listening", { replace: true });
+      navigate("/test/uploads", { replace: true });
 
 
       // swal({
