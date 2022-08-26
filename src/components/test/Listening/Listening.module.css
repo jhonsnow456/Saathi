@@ -16,3 +16,16 @@
 .answer_section button {
     margin-top: 3px;
 }
+
+.next_btn_container {
+    box-sizing: border-box;
+    padding: 15px 0;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.next_btn_container button {
+    width: 100%;
+}

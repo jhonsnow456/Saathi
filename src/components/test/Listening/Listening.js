@@ -113,7 +113,7 @@ const Listening = (props) => {
                 <h3>Answer:</h3>
                 <TextField type="text" inputRef={inputRef}/>
             </section>
-            <section className="next_btn_container">
+            <section className={styles.next_btn_container}>
                 <Button title="Submit" onClick={handleSubmit} variant="contained" size='large'>
                     Next
                 </Button>

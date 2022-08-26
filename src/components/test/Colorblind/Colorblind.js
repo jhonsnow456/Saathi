@@ -68,7 +68,7 @@ const Colorblind = (props) => {
                 </center>
                 {/* <Button className='btn btn-secondary' variant="contained" onClick={handleAnswerCheck} title="Check Answer"> Capture </Button> */}
             </section>
-            <section className="next_btn_container">
+            <section className={styles.next_btn_container}>
                 <Button title="Submit" onClick={props.onSubmit} variant="contained" size='large'>
                     Next
                 </Button>
