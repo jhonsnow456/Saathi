@@ -13,7 +13,7 @@ import {
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 // @mui
-import { Box, Card, CardHeader } from '@mui/material';
+import { Box, Card,Button, CardHeader } from '@mui/material';
 
 // ----------------------------------------------------------------------
 const percentage = 66;
@@ -38,9 +38,22 @@ const circularStyles = buildStyles({
   trailColor: '#d6d6d6',
 })
 
+
 export default function DashboardApp() {
   const theme = useTheme();
 
+  const element = document.getElementById("root");
+  const opt = {
+    margin: 1,
+    filename: "myfile.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+  };
+
+  async function download(){
+    await window.print()
+  }
   return (
     <Page title="Report">
       <Container maxWidth="xl">
@@ -480,6 +493,12 @@ export default function DashboardApp() {
             <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
           </Grid> */}
         </Grid>
+
+        <div style={{display:"flex", margin:"34px"}}>
+                    <Button title="Submit" onClick={download} size="large" variant="contained" style={{width: "100%"}}>
+                        Download as sharable report.
+                    </Button>
+                </div>
       </Container>
     </Page>
   );
