@@ -17,6 +17,10 @@ import {
 import IconButton from '@mui/material/IconButton';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+import Lottie from "react-lottie";
+
+import analyzing from '../../../lotties/analyzespeech.json'
+import recording from '../../../lotties/recording.json'
 
 import { sizing } from '@mui/system';
 
@@ -26,6 +30,28 @@ import { Navigate } from "react-router-dom";
 
 const APIKey = process.env.REACT_APP_API_KEY
 
+//lottie config
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  // here is where we will declare lottie animation
+  // "animation" is what we imported before 
+  animationData: analyzing,
+  rendererSettings: {
+     preserveAspectRatio: "xMidYMid slice",
+  },
+};
+
+const recordingAnimationOptions = {
+  loop: true,
+  autoplay: true,
+  // here is where we will declare lottie animation
+  // "animation" is what we imported before 
+  animationData: recording,
+  rendererSettings: {
+     preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 // Set AssemblyAI Axios Header
 const assemblyAI = axios.create({
@@ -51,23 +77,6 @@ const QuestionCointainer = styled('div')(({ theme }) => ({
     padding: "8px",
 }));
 
-//conditional rendering
-function loadQuestionTemplate() {
-    const questionType = "";
-    switch(questionType) {
-        case 'MCQ':
-            break;
-        case 'speech-test':
-            
-            break;
-        default:
-    }
-}
-
-//utility functions
-// function loadQuestion() {
-//     return (props.question)? toString(props.question) : "This is a Sample Question"
-// }
 
 export default function SpeechTest(props) {
   // Mic-Recorder-To-MP3
@@ -83,16 +92,11 @@ export default function SpeechTest(props) {
   const [transcriptData, setTranscriptData] = useState("")
   const [transcript, setTranscript] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [uploaded, setUploaded] = useState(false)
 
-  // all blobs in container
-  const [blobList, setBlobList] = useState([]);
-
-  // current file to upload into container
-  const [fileSelected, setFileSelected] = useState(null);
 
   // UI/form management
   const [uploading, setUploading] = useState(false);
-  const [inputKey, setInputKey] = useState(Math.random().toString(36));
 
   useEffect(() => {
     //Declares the recorder object and stores it inside of ref
@@ -179,12 +183,6 @@ export default function SpeechTest(props) {
     return () => clearInterval(interval)
   })
 
-
-  // const onFileChange = (event) => {
-  //   // capture file into state
-  //   setFileSelected(event.target.files[0]);
-  // };
-
   const onFileUpload = async (file) => {
     // prepare UI
     setUploading(true);
@@ -192,32 +190,31 @@ export default function SpeechTest(props) {
     // *** UPLOAD TO AZURE STORAGE ***
     const blobsInContainer = await uploadFileToBlob(file);
 
-    // prepare UI for results
-    setBlobList(blobsInContainer);
-
-    // reset state/form
-    setFileSelected(null);
     setUploading(false);
-    setInputKey(Math.random().toString(36));
+    setUploaded(true);
   };
 
 
+  function nextQuestion(){
+    setUploading(false);
+    setUploaded(false);
+    setAudioFile(null);
+    props.onSubmit();
+  }
     return (
             <TestContainer>
                 <QuestionCointainer style={{display:"flex", flexDirection:"column"}}>
                     <center>
-        
+                    <h3>{props.data.question}</h3>
                     </center>
 
                     <div style={{display:"flex", justifyContent:"space-around"}}>
                       {(!isRecording)
                       ? (<IconButton onClick={startRecording} disabled={isRecording} aria-label="record" size="medium" color="success">
-                            <PlayCircleOutlineIcon />
-                              Record
+                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/controller-and-music/play-button-outline-green-icon.png" style={{height:"120px"}}  />
                         </IconButton>)
                       : (<IconButton onClick={stopRecording} disabled={!isRecording} aria-label="pause" size="large" color="primary">
-                          <PauseCircleOutlineIcon />
-                            Stop
+                            <Lottie options={recordingAnimationOptions} height={120} width={120} />
                           </IconButton>)
                       }
                     </div>
@@ -238,14 +235,8 @@ export default function SpeechTest(props) {
                 <center>
                   {isLoading ? (
                     <div>
-                      <Oval
-                        ariaLabel='loading-indicator'
-                        height={100}
-                        width={100}
-                        strokeWidth={5}
-                        color='red'
-                        secondaryColor='yellow'
-                      />
+                      <Lottie options={defaultOptions} height={120} width={120} />
+
                       <p className='text-center'>Wait we analyzing....</p>
                     </div>
                   ) : (
@@ -264,13 +255,19 @@ export default function SpeechTest(props) {
                 </QuestionCointainer>
                 
                 <center>
-                  {!uploading}
-                  {uploading && <div>Saving your answer! Wait a minute!</div>}
-                  {uploading && <div>Your response has been saved.</div>}
+                  {(uploading) 
+                  ? (<div>Saving your answer! Wait a minute!</div>)
+                  : (<div></div>)}
+                </center>
+
+                <center>
+                  {(uploaded) 
+                  ? (<div>Your response has been saved.</div>)
+                  : (<div></div>)}
                 </center>
 
                 <div style={{display:"flex"}}>
-                    <Button title="Submit" onClick={props.onSubmit} size="large" variant="contained" style={{width: "100%"}}>
+                    <Button title="Submit" onClick={nextQuestion} size="large" variant="contained" style={{width: "100%"}}>
                         Next
                     </Button>
                 </div>

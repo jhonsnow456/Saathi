@@ -2,8 +2,8 @@ const TEST_LISTENING = {
     details: {
         name: 'Speeking Assesment',
     },
-    questions: {
-        easy: [
+    questions: [
+
             {
                 question: 'Read the word "Cat" loudly!',
                 answer: 'cat',
@@ -128,14 +128,8 @@ const TEST_LISTENING = {
                 ageMin: 5,
                 ageMax: 15
             },
-            {
-                question: 'Read the word "Bookstore" without saying "Book"',
-                answer: 'store',
-                ageMin: 5,
-                ageMax: 15
-            }
         ]
-    }
 }
+
 
 export default TEST_LISTENING
