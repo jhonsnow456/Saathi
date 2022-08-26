@@ -28,7 +28,7 @@ import Speaking from './components/test/Speaking/speech-to-text';
 import Dyscalculia from './components/test/Dyscalculia/Dyscalculia';
 import Uploadvedio from "./components/test/uploadvedio/Uploadvedio";
 
-import Profile from "./pages/profile/Profile";
+// import Profile from "./pages/profile/Profile";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
 import TEST_HANDWRITING from "./data/TEST_HANDWRITING";
@@ -44,10 +44,10 @@ export default function Router(props) {
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
         { path: "app", element: <DashboardApp /> },
-        {
-          path: "user/:id",
-          element: <Profile /> ,
-        },
+        // {
+        //   path: "user/:id",
+        //   element: <Profile /> ,
+        // },
         { path: "test/new", element: <TestOnboarding />},
         { path: "test/speech", element: <TestMaker details={TEST_SPEAKING.details} questions={TEST_SPEAKING.questions} testComponent={SpeechTest}/>   },
         { path: "test/color-blindness", element: <TestMaker details={TEST_ISHIHARA.details} questions={TEST_ISHIHARA.questions} testComponent={Colorblind}/> },
