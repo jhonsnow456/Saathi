@@ -21,8 +21,8 @@ const Handwriting = (props) => {
     const [blobList, setBlobList] = useState([]);
     const [imgSrc, setImgSrc] = useState(null);
 
-    const [deviceId, setDeviceId] = useState({});
-    const [devices, setDevices] = useState([]);
+    // const [deviceId, setDeviceId] = useState({});
+    // const [devices, setDevices] = useState([]);
 
     const [uploading, setUploading] = useState(false);
     const [inputKey, setInputKey] = useState(Math.random().toString(36));
@@ -32,17 +32,17 @@ const Handwriting = (props) => {
         setImgSrc(imageSrc);
     }, [webcamRef, setImgSrc]);
 
-    const handleDevices = useCallback(
-        mediaDevices =>
-          setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
-        [setDevices]
-    );
+    // const handleDevices = useCallback(
+    //     mediaDevices =>
+    //       setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
+    //     [setDevices]
+    // );
 
-    useEffect(() => {
-          navigator.mediaDevices.enumerateDevices().then(handleDevices);
-        },
-        [handleDevices]
-    );
+    // useEffect(() => {
+    //       navigator.mediaDevices.enumerateDevices().then(handleDevices);
+    //     },
+    //     [handleDevices]
+    // );
 
     const onFileUpload = async (file) => {
         setUploading(true);
@@ -81,6 +81,10 @@ const Handwriting = (props) => {
         setInputKey(Math.random().toString(36));
     }
 
+    const videoConstraints = {
+        facingMode: { exact: "environment" }
+    };
+
     return (
         <article className={styles.container}>
             <section>
@@ -92,7 +96,7 @@ const Handwriting = (props) => {
             </section>
             <section>
                 <center style={{marginTop: "32px",marginBottom: "32px"}}>
-                    {
+                    {/* {
                         devices.map((device, key) => (
                             <div>
                               <Webcam className={styles.handwriting_image} audio={false} ref={webcamRef} screenshotFormat="image/jpeg" videoConstraints={{ deviceId: device.deviceId }} />
@@ -100,8 +104,8 @@ const Handwriting = (props) => {
                             </div>
                   
                         ))
-                    }
-                    {/* <Webcam className={styles.handwriting_image} audio={false} ref={webcamRef} screenshotFormat="image/jpeg" /> */}
+                    } */}
+                    <Webcam className={styles.handwriting_image} audio={false} ref={webcamRef} screenshotFormat="image/jpeg" videoConstraints={videoConstraints} />
                 </ center>
             </section>
             <section className={styles.answer_section}>
