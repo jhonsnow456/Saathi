@@ -161,6 +161,7 @@ export default function SpeechTest(props) {
     setIsLoading(true)
     try {
       await assemblyAI.get(`/transcript/${transcriptID}`).then((res) => {
+        console.log(res.data)
         setTranscriptData(res.data)
       })
     } catch (err) {
@@ -198,7 +199,6 @@ export default function SpeechTest(props) {
   function nextQuestion(){
     setUploading(false);
     setUploaded(false);
-    setTranscript("");
     setAudioFile(null);
     props.onSubmit();
   }

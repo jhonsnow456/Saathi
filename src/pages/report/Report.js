@@ -7,19 +7,36 @@ import Page from '../../components/Page';
 import Iconify from '../../components/Iconify';
 // sections
 import {
-  AppTasks,
-  AppNewsUpdate,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite,
-  AppWidgetSummary,
-  AppCurrentSubject,
   AppConversionRates,
   SpeakingReport
 } from '../../sections/report';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+// @mui
+import { Box, Card, CardHeader } from '@mui/material';
 
 // ----------------------------------------------------------------------
+const percentage = 66;
+
+function getErrorStatusColor(percentage) {
+  if(percentage>70) return '#ff0000';
+  if(percentage>50) return '#ff0000';
+  if(percentage>30) return '#00FF00';
+  if(percentage>20) return '#00FF00';
+  if(percentage>10) return '#00FF00';
+}
+
+function getStyle(value) {
+  
+}
+const circularStyles = buildStyles({
+  // Rotation of path and trail, in number of turns (0-1)
+  pathTransitionDuration: 0.5,
+  // Colors
+  pathColor: getErrorStatusColor(percentage),
+  textColor: getErrorStatusColor(percentage),
+  trailColor: '#d6d6d6',
+})
 
 export default function DashboardApp() {
   const theme = useTheme();
@@ -37,56 +54,270 @@ export default function DashboardApp() {
               title="Reading Test"
               subheader="Eyeball tracking test."
               chartData={[
-                { label: 'Italy', value: 400 },
+                { label: 'Deviation Value', value: 240 },
               ]}
             />
+          </Grid>
+
+          <Grid item xs={12} md={12} lg={12}>
+              <Card>
+                <CardHeader title="Speaking Test"/>
+                <div  style={{display:"flex",  flexWrap:"wrap"}} >
+                  <Grid item xs={12} md={12} lg={6}>
+                    <Box sx={{ m: 5 }}>
+                      <div style={{margin:"12px"}}>
+                        <div>
+                          <div>
+                            <b>Repetition of words</b>
+                          </div>
+                          &nbsp;
+
+                          <div>
+                              Total Repeated Words : 4
+                          </div>
+                        </div>
+                      </div>
+                      &nbsp;
+
+                      <div style={{margin:"12px"}}>
+                        <div>
+                          <div>
+                            <b>Delayed Speech</b>
+                          </div>
+                          &nbsp;
+
+                          <div>
+                            <div>
+                              Average Time Delay : 1300ms
+                            </div>
+                            <div>
+                              Maximum Time Delay : 2400ms
+                            </div>
+                          </div>
+                        </div>
+                        <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        </div>
+                      </div>
+                    </Box>
+                  </Grid>
+                  
+                  <Grid item xs={12} md={6} lg={6}>
+                    <Box sx={{ mx: 3 }} dir="ltr">
+
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <b>Recognizing Sound of word.</b>
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 1
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar styles={circularStyles} value={(1/5)*100} text={`${(1/5)*100}%`} />   
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <b>First and Last Sound of word.</b>
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 4
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar styles={circularStyles} value={(4/5)*100} text={`${(4/5)*100}%`} />   
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <b>Seprating compounded words.</b>
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 5
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar value={(5/5)*100} text={`${(5/5)*100}%`} />   
+                      </div>
+                    </div>
+                    </Box>
+                  </Grid>
+                </div>
+              </Card>
           </Grid>
 
           <Grid item xs={12} md={6} lg={6}>
-            <SpeakingReport
-              title="Speech Test"
-
-              chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-              ]}
-
-            />
+                <Card>
+                    <CardHeader title="Writing Test" />
+                      <Box sx={{ m:5, p:5 }}>
+                        <div style={{display:"flex"}}>                        
+                          <img src="https://learningabledkids.com/images/worksamples/k12worksamples/8thgradeessay.jpg" height={256} />
+                        
+                          <img src="https://fileuploadapp.blob.core.windows.net/tutorial-container/photo_2022-08-26_15-09-21.jpg" height={256} />
+                        </div>
+                    </Box>
+                </Card>
           </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+              <Card>
+                    <CardHeader title="Listening Test" />
+                      <Box sx={{ m:1 }} dir="ltr">
+                      <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <b>Phonological Awareness</b>
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 1
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar styles={circularStyles} value={(1/5)*100} text={`${(1/5)*100}%`} />   
+                      </div>
+                    </div>
+                      &nbsp;&nbsp;
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <b>Verbal Short Term Memory</b>
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 4
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar styles={circularStyles} value={(4/5)*100} text={`${(4/5)*100}%`} />   
+                      </div>
+                    </div>
+
+                    </Box>
+                </Card>
+          </Grid>
+
+          
 
           <Grid item xs={12} md={6} lg={6}>
-            <SpeakingReport
-              title="Listening Test"
+              <Card>
+                  <CardHeader title="Logic Test" />
+                  <Box sx={{ mx: 3 }} dir="ltr">
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                          Basic Calculations Skill
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 1
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar value={(1/5)*100} text={`${(1/5)*100}%`} />   
+                      </div>
+                    </div>
 
-              chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-              ]}
-            />
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                         Facts remembering score.
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 4
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar value={(4/5)*100} text={`${(4/5)*100}%`} />   
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                          Count related Awareness
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 5
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar value={(5/5)*100} text={`${(5/5)*100}%`} />   
+                      </div>
+                    </div>
+                  </Box>
+
+                  <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
+                      <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                        <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                          Numeric comparision skills.
+                        </div>
+                        <div style={{ display: "flex",}}>
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Incorrect : 5
+                          </div>
+                          &nbsp;&nbsp;
+                          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                            Total : 5
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
+                        <CircularProgressbar value={(5/5)*100} text={`${(5/5)*100}%`} />   
+                      </div>
+                    </div>
+                </Card>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={6}>
-            <SpeakingReport
-              title="Reading Test"
-
-              chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-              ]}
-
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={6}>
-            <SpeakingReport
-              title="Logic and Reasoning Test"
-
-              chartData={[
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-              ]}
-            />
-          </Grid>
 
         {/* <Grid item xs={12} md={6} lg={8}>
           <AppWebsiteVisits

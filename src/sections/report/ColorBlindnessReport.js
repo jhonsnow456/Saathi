@@ -25,8 +25,13 @@ function getErrorStatusColor(percentage) {
 }
 
 export default function SpeakingReport({ title, chartData, ...other }) {
+  const chartLabels = chartData.map((i) => i.label);
+
+  const chartSeries = chartData.map((i) => i.value);
 
   const percentage = 66;
+
+  
 
   const circularStyles = buildStyles({
     // Rotation of path and trail, in number of turns (0-1)
@@ -46,11 +51,15 @@ export default function SpeakingReport({ title, chartData, ...other }) {
         <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
           <div style={{ marginTop: "auto", marginBottom: "auto" }}>
             <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-              Repetition of words
+              Phoneom Test
             </div>
             <div style={{ display: "flex",}}>
               <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-                Total Repeated Words : 4
+                Incorrect : 3
+              </div>
+              &nbsp;&nbsp;
+              <div style={{ marginTop: "auto", marginBottom: "auto" }}>
+                Total : 5
               </div>
             </div>
           </div>
@@ -62,48 +71,7 @@ export default function SpeakingReport({ title, chartData, ...other }) {
         <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
           <div style={{ marginTop: "auto", marginBottom: "auto" }}>
             <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-              Delayed Speech
-            </div>
-            <div style={{ display: "flex",}}>
-              <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-                Average Time Delay : 1300ms
-              </div>
-              &nbsp;&nbsp;
-              <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-                Maximum Time Delay : 2400ms
-              </div>
-            </div>
-          </div>
-          <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
-            <CircularProgressbar value={percentage} text={`${percentage}%`} />   
-          </div>
-        </div>
-
-
-        <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
-          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-            <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-              Recognizing Sound of word.
-            </div>
-            <div style={{ display: "flex",}}>
-              <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-                Incorrect : 3
-              </div>
-              &nbsp;&nbsp;
-              <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-                Total : 5
-              </div>
-            </div>
-          </div>
-          <div style={{ width: 100, height: 100, marginTop: "auto", marginBottom: "auto"  }}>
-            <CircularProgressbar value={percentage} text={`${percentage}%`} />   
-          </div>
-        </div>
-
-        <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
-          <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-            <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-              Recognizing Sound of word.
+              Phoneom Test
             </div>
             <div style={{ display: "flex",}}>
               <div style={{ marginTop: "auto", marginBottom: "auto" }}>
@@ -124,7 +92,7 @@ export default function SpeakingReport({ title, chartData, ...other }) {
         <div style={{ display: "flex", justifyContent:"space-around", height: 120 }}>
           <div style={{ marginTop: "auto", marginBottom: "auto" }}>
             <div style={{ marginTop: "auto", marginBottom: "auto" }}>
-              Seprating compounded words
+              Phoneom Test
             </div>
             <div style={{ display: "flex",}}>
               <div style={{ marginTop: "auto", marginBottom: "auto" }}>
