@@ -1,10 +1,13 @@
 import * as Yup from "yup";
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
+import Lottie from "react-lottie";
+
 import { useFormik, Form, FormikProvider } from "formik";
 import eyeFill from "@iconify/icons-eva/eye-fill";
 import eyeOffFill from "@iconify/icons-eva/eye-off-fill";
 import { useNavigate, Navigate } from "react-router-dom";
+
 // material
 import {
   Stack,
@@ -15,6 +18,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import recording from '../../lotties/registration.json'
 
 // ----------------------------------------------------------------------
 import swal from "sweetalert";
@@ -24,6 +28,18 @@ function generateRandomNumber() {
   return Math.floor(Math
   .random() * (maxm - minm + 1)) + minm;
 }
+
+
+const recordingAnimationOptions = {
+  loop: true,
+  autoplay: true,
+  // here is where we will declare lottie animation
+  // "animation" is what we imported before 
+  animationData: recording,
+  rendererSettings: {
+     preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 const testId = generateRandomNumber();
 
@@ -122,6 +138,12 @@ export default function RegisterForm() {
 
   return (
     <div style={{margin:"10%"}}>
+    <Lottie options={recordingAnimationOptions} height={200} width={200} />
+    <br>
+    </br>
+    <br>
+    </br>
+
     <FormikProvider value={formik}  >
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
