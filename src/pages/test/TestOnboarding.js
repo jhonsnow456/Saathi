@@ -98,7 +98,7 @@ export default function RegisterForm() {
       localStorage.setItem("gender", values.gender);
       localStorage.setItem("age", values.age);
       localStorage.setItem("grade", values.grade);
-      
+
 
 
       swal({
