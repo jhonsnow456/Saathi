@@ -9,6 +9,7 @@ import {
 import { getData, storeData } from '../../utils/storageManager'
 import Lottie from 'react-lottie';
 import popperAnimation from '../../lotties/popper.json'
+import { useNavigate } from 'react-router-dom';
 
 //styles
 const Header = styled('div')(({ theme }) => ({
@@ -43,6 +44,7 @@ const defaultOptions = {
 const TestMaker = (props) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [animationCounter, setAnimationCounter] = useState(false)
+    const navigate = useNavigate()
 
     function handleUpdateQuestion(type) {
         if (type == "prev") {
@@ -56,6 +58,12 @@ const TestMaker = (props) => {
 
                 //show animation
                 setAnimationCounter(true)
+            }
+            // move to next test
+            else if(currentQuestion === props.questions.length - 1){
+                if(props.details.next_test){
+                    navigate(props.details.next_test)
+                }
             }
         }
     }
