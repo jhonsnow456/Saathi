@@ -31,6 +31,11 @@ export default function AppConversionRates({ title, subheader, chartData, ...oth
         },
       },
     },
+    dataLabels: {
+      style: {
+        colors: ['#F44336', '#E91E63', '#9C27B0']
+      }
+    },
     plotOptions: {
       bar: { horizontal: true, barHeight: '10%', borderRadius: 2 },
     },
