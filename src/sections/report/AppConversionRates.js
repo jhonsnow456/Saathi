@@ -43,8 +43,13 @@ export default function AppConversionRates({ title, subheader, chartData, ...oth
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
-      <Box sx={{ mx: 3 }} dir="ltr">
-        <ReactApexChart type="bar" series={[{ data: chartSeries }]} options={chartOptions} height={364} />
+      <Box sx={{ mx: 3 }} dir="ltr" style={{display:"flex"}}>
+        <div style={{width:"30%"}}>
+          <ReactApexChart type="bar" series={[{ data: chartSeries }]} options={chartOptions} height={256} />
+        </div>
+        <div style={{width:"60%"}}>
+        <img src="https://fileuploadapp.blob.core.windows.net/tutorial-container/087805eb-20f6-46f2-9a07-94492e879fc9.jpg" height={350} />
+        </div>
       </Box>
     </Card>
   );
