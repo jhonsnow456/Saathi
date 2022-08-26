@@ -58,7 +58,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     {
       title: 'Profile',
       path:`/dashboard/user/${window.btoa(localStorage.getItem('email'))}`,
-      icon: <Icon icon={peopleFill} width={22} height={22} style={{color:'white'}}/>
+      icon: <Icon icon={peopleFill} width={22} height={22} style={{color:'grey'}}/>
     },
     {
       title: 'Reports',
