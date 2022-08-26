@@ -344,7 +344,7 @@ const TEST_DYSCALCULIA = {
   ]
 };
 
-export {
+export{
   TEST_DYSCALCULIA,
   TYPES,
 }
