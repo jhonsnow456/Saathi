@@ -99,17 +99,18 @@ export default function RegisterForm() {
       localStorage.setItem("age", values.age);
       localStorage.setItem("grade", values.grade);
       
+
+
+      swal({
+        title: "Your Test/Report Id is " + testId,
+        icon: "success",
+        closeOnClickOutside: false,
+        buttons: false,
+        className: "pb-5",
+        timer: 2000,
+      })
+
       navigate("/test/listening", { replace: true });
-
-
-      // swal({
-      //   title: "Your Test Id is " + testId,
-      //   icon: "success",
-      //   closeOnClickOutside: false,
-      //   buttons: false,
-      //   className: "pb-5",
-      //   timer: 5000,
-      // })
 
 
       // fetch(
