@@ -198,6 +198,7 @@ export default function SpeechTest(props) {
   function nextQuestion(){
     setUploading(false);
     setUploaded(false);
+    setTranscript("");
     setAudioFile(null);
     props.onSubmit();
   }
@@ -205,10 +206,10 @@ export default function SpeechTest(props) {
             <TestContainer>
                 <QuestionCointainer style={{display:"flex", flexDirection:"column"}}>
                     <center>
-                    <h3>{props.data.question}</h3>
+                    <h4>{props.data.question}</h4>
                     </center>
 
-                    <div style={{display:"flex", justifyContent:"space-around"}}>
+                    <div style={{display:"flex", justifyContent:"space-around", margin:"24px"}}>
                       {(!isRecording)
                       ? (<IconButton onClick={startRecording} disabled={isRecording} aria-label="record" size="medium" color="success">
                             <img src="https://uxwing.com/wp-content/themes/uxwing/download/controller-and-music/play-button-outline-green-icon.png" style={{height:"120px"}}  />
