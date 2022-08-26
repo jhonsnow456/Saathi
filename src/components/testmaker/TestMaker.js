@@ -62,6 +62,8 @@ const TestMaker = (props) => {
             // move to next test
             else if(currentQuestion === props.questions.length - 1){
                 if(props.details.next_test){
+                    setCurrentQuestion(0);
+                    setAnimationCounter(false);
                     navigate(props.details.next_test)
                 }
             }
