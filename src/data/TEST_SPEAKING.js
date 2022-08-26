@@ -1,6 +1,7 @@
 const TEST_LISTENING = {
     details: {
         name: 'Speeking Assesment',
+        next_test: '/test/dyscalculia/'
     },
     questions: [
             {
