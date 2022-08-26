@@ -58,11 +58,11 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     {
       title: 'Profile',
       path:`/dashboard/user/${window.btoa(localStorage.getItem('email'))}`,
-      icon: <Icon icon={peopleFill} width={22} height={22} style={{color:'white'}}/>
+      icon: <Icon icon={peopleFill} width={22} height={22} style={{color:'grey'}}/>
     },
     {
       title: 'Reports',
-      path: '/dashboard/report',
+      path: '/fetch-report',
       icon: <Icon icon="material-symbols:file-copy-outline-rounded" width={22} height={22} />
     },  
     {
@@ -111,7 +111,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {/* {account.displayName} */}
-                {localStorage.getItem('firstName') + " " + localStorage.getItem('lastName')}
+                {localStorage.getItem('name') || "Please take test"}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 {localStorage.getItem('role')}

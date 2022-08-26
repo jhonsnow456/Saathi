@@ -1,11 +1,9 @@
 import React, {useCallback, useState, useRef, useEffect} from 'react'
 import Webcam from 'react-webcam'
 import {
-    Card,
     Button,
   } from "@mui/material";
 import { styled } from '@mui/material/styles';
-// import speakerIcon from '../../assets/icon_audio.png'
 import styles from './Handwriting.module.css'
 
 
@@ -21,9 +19,6 @@ const Handwriting = (props) => {
     const [blobList, setBlobList] = useState([]);
     const [imgSrc, setImgSrc] = useState(null);
 
-    // const [deviceId, setDeviceId] = useState({});
-    // const [devices, setDevices] = useState([]);
-
     const [uploading, setUploading] = useState(false);
     const [inputKey, setInputKey] = useState(Math.random().toString(36));
 
@@ -31,18 +26,6 @@ const Handwriting = (props) => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
     }, [webcamRef, setImgSrc]);
-
-    // const handleDevices = useCallback(
-    //     mediaDevices =>
-    //       setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
-    //     [setDevices]
-    // );
-
-    // useEffect(() => {
-    //       navigator.mediaDevices.enumerateDevices().then(handleDevices);
-    //     },
-    //     [handleDevices]
-    // );
 
     const onFileUpload = async (file) => {
         setUploading(true);
@@ -88,7 +71,8 @@ const Handwriting = (props) => {
     return (
         <article className={styles.container}>
             <section>
-                <h3>{props.data.question}</h3>
+                <h3> {props.data.question} </h3>
+                <p> {props.data.instruction} </p>
                 {
                     (props.data.image === "") ? "" : 
                         <center> <img className={styles.handwriting_image} src={props.data.image} alt="handwriting image"/> </center>

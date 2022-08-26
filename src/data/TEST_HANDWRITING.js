@@ -1,6 +1,7 @@
 const TEST_HANDWRITING = {
     details: {
-        name: 'Writing Assesment'
+        name: 'Writing Assesment',
+        next_test: 'test/dyscalculia'
     },
     questions: [
     {
