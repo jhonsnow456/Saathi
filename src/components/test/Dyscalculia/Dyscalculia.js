@@ -78,7 +78,7 @@ const Dyscalculia = (props) => {
           >{answerOption.answerText}</Button>
       ))}
       </section>
-      <div style={{display:"flex"}}>
+      <div className="next_btn_container">
           <Button title="Submit" onClick={handleSubmit} size="large" variant="contained" style={{width: "100%"}}>
               Next
           </Button>

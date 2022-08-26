@@ -267,7 +267,7 @@ export default function SpeechTest(props) {
                   : (<div></div>)}
                 </center>
 
-                <div style={{display:"flex"}}>
+                <div className="next_btn_container">
                     <Button title="Submit" onClick={nextQuestion} size="large" variant="contained" style={{width: "100%"}}>
                         Next
                     </Button>
