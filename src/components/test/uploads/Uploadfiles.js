@@ -3,11 +3,24 @@ import {
     Button,
   } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import Lottie from "react-lottie";
 import styles from './Uploadfiles.module.css'
 
 
 import Path from 'path'
 import uploadFileToBlob, {isStorageConfigured} from './azure-file-storage';
+import recording from '../../../lotties/registration.json'
+
+const recordingAnimationOptions = {
+  loop: true,
+  autoplay: true,
+  // here is where we will declare lottie animation
+  // "animation" is what we imported before 
+  animationData: recording,
+  rendererSettings: {
+     preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 const storageConfigured = isStorageConfigured();
 
@@ -88,6 +101,12 @@ const UploadFiles = (props) => {
                 >
                     Capture
                 </Button> */}
+                
+                <center>
+                  <Lottie options={recordingAnimationOptions} height={200} width={200} />
+                </center>
+
+                <br />
 
                 <input className="btn btn-secondary" variant="contained" style={{ paddingLeft:"auto", paddingRight:"auto"}} type="file" onChange={onFileChange} key={inputKey || ''} />
 
