@@ -1,6 +1,7 @@
 const TEST_ISHIHARA = {
     details: {
-        name: 'Colour Blindness Assesment'
+        name: 'Colour Blindness Assesment',
+        next_test: '/report'
     },
     questions: [
         {

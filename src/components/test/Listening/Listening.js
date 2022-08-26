@@ -6,6 +6,8 @@ import {
 import { styled } from '@mui/material/styles';
 import speakerIcon from '../../../assets/icon_audio.png'
 import styles from './Listening.module.css'
+import robotAnimation from '../../../lotties/talking-robot.json'
+import Lottie from 'react-lottie';
 
 const synth = window.speechSynthesis;
 
@@ -20,8 +22,18 @@ const handlePlayAudio = (message, speed = 0.7) => {
     synth.speak(utterThis)
 }
 
+const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: robotAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
 const Listening = (props) => {
     const inputRef = useRef(null);
+    const [isBotStopped, setIsBotStopped] = useState(false);
 
     const handleAnswerCheck = () => {
         const inputText = inputRef.current.value?.toLowerCase()
@@ -63,9 +75,18 @@ const Listening = (props) => {
             }
         },301)
 
+        //check for bot animation playing
+        const id3 = setInterval(()=>{
+            if(synth.speaking) setIsBotStopped(false)
+            else if(!synth.speaking) setIsBotStopped(true);
+            console.log('bot status', synth.speaking)
+        },100)
+
         return () => {
             clearTimeout(id);
             clearInterval(id2);
+            clearInterval(id3);
+            synth.cancel();
         }
     },[props.data])
 
@@ -77,8 +98,15 @@ const Listening = (props) => {
     return (
         <article className={styles.container}>
             <section>
-                <Button onClick={playAudioAgain}>
+                {/* <Button onClick={playAudioAgain}>
                     <img className={styles.speaker_icon} src={speakerIcon} alt="speaker icon"/>
+                </Button> */}
+                <Button onClick={playAudioAgain}>
+                    <Lottie options={defaultOptions}
+                        height={400}
+                        width={320}
+                        isStopped={isBotStopped}
+                    />
                 </Button>
             </section>
             <section className={styles.answer_section}>

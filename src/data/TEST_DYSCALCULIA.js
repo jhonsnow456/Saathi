@@ -36,127 +36,126 @@ const TYPES = {
 
 const TEST_DYSCALCULIA = {
   details: {
-    name: 'Dyscalculia'
+    name: 'Dyscalculia',
+    next_test: '/test/color-blindness'
   },
 
   questions: [
     {
-      id: 1,
-      questionText: '4 + 2 = ?',
-      questionType: 'TYPE1',
-      answerOptions: [
-        { answerText: '7', isCorrect: false },
-        { answerText: '6', isCorrect: true },
-        { answerText: '10', isCorrect: false },
-        { answerText: '8', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 2,
-      questionText: '5 x 4 = ?',
-      questionType: 'TYPE1',
-      answerOptions: [
-        { answerText: '10', isCorrect: false },
-        { answerText: '9', isCorrect: false },
-        { answerText: '11', isCorrect: false },
-        { answerText: '20', isCorrect: true },
-      ],
-    },
-
-    {
-      id: 3,
-      questionText: '6 - 5 = ?',
-      questionType: 'TYPE1',
-      answerOptions: [
-        { answerText: '1', isCorrect: true },
-        { answerText: '12', isCorrect: false },
-        { answerText: '15', isCorrect: false },
-        { answerText: '7', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 4,
-      questionText: '4 / 2 = ?',
-      questionType: 'TYPE1',
-      answerOptions: [
-        { answerText: '17', isCorrect: false },
-        { answerText: '1', isCorrect: false },
-        { answerText: '0', isCorrect: false },
-        { answerText: '2', isCorrect: true },
-      ],
-    },
-
-    {
-      id: 5,
-      questionText: '5 - 6 = ?',
-      questionType: 'TYPE1',
-      answerOptions: [
-        { answerText: '-1', isCorrect: true },
-        { answerText: '1', isCorrect: false },
-        { answerText: '0', isCorrect: false },
-        { answerText: '2', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 6,
-      questionText: 'Which number comes after 8 ?',
-      questionType: 'TYPE2',
-      answerOptions: [
-        { answerText: '7', isCorrect: false },
-        { answerText: '9', isCorrect: true },
-        { answerText: '6', isCorrect: false },
-        { answerText: '8', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 7,
-      questionText: 'What comes after Thursday ?',
-      questionType: 'TYPE2',
-      answerOptions: [
-        { answerText: 'Saturday', isCorrect: false },
-        { answerText: 'Monday', isCorrect: false },
-        { answerText: 'Friday', isCorrect: true },
-        { answerText: 'Tuesday', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 8,
-      questionText: 'What comes before June ?',
-      questionType: 'TYPE2',
-      answerOptions: [
-        { answerText: 'July', isCorrect: false },
-        { answerText: 'May', isCorrect: true },
-        { answerText: 'December', isCorrect: false },
-        { answerText: 'January', isCorrect: false },
-      ],
-    },
-    
-    {
-      id: 9,
-      questionText: 'How many apples are there in 1 Dozen ?',
-      questionType: 'TYPE2',
+      id: 16,
+      questionText: 'How many dots do you see ?',
+      questionImage: problem16,
+      questionType: 'TYPE4',
       answerOptions: [
         { answerText: '2', isCorrect: false },
-        { answerText: '12', isCorrect: true },
-        { answerText: '8', isCorrect: false },
-        { answerText: '20', isCorrect: false },
+        { answerText: '1', isCorrect: false },
+        { answerText: '5', isCorrect: false },
+        { answerText: '4', isCorrect: true },
       ],
     },
 
     {
-      id: 10,
-      questionText: 'How many days are there in a week ?',
-      questionType: 'TYPE2',
+      id: 17,
+      questionText: 'How many dolls are there ?',
+      questionImage: problem17,
+      questionType: 'TYPE4',
       answerOptions: [
+        { answerText: '2', isCorrect: false },
         { answerText: '1', isCorrect: false },
-        { answerText: '3', isCorrect: false },
+        { answerText: '3', isCorrect: true },
+        { answerText: '4', isCorrect: false },
+      ],
+    },
+
+    {
+      id: 18,
+      questionText: 'Count the apples.',
+      questionImage: problem18,
+      questionType: 'TYPE4',
+      answerOptions: [
         { answerText: '7', isCorrect: true },
-        { answerText: '14', isCorrect: false },
+        { answerText: '1', isCorrect: false },
+        { answerText: '5', isCorrect: false },
+        { answerText: '4', isCorrect: false },
+      ],
+    },
+    {
+      id: 21,
+      questionText: 'Which is a Square ?',
+      questionImage: problem21,
+      questionType: 'TYPE5',
+      answerOptions: [
+        { answerText: '2', isCorrect: false },
+        { answerText: '1', isCorrect: true },
+      ],
+    },
+
+    {
+      id: 22,
+      questionText: 'Which is an acute angle ?',
+      questionImage: problem22,
+      questionType: 'TYPE5',
+      answerOptions: [
+        { answerText: 'B', isCorrect: false },
+        { answerText: 'A', isCorrect: true },
+        { answerText: 'C', isCorrect: false },
+      ],
+    },
+
+    {
+      id: 23,
+      questionText: 'Which is a Triangle ?',
+      questionImage: problem23,
+      questionType: 'TYPE5',
+      answerOptions: [
+        { answerText: 'A', isCorrect: false },
+        { answerText: 'B', isCorrect: true },
+      ],
+    },
+
+    {
+      id: 24,
+      questionText: 'Which is an obtuse angle ?',
+      questionImage: problem22,
+      questionType: 'TYPE5',
+      answerOptions: [
+        { answerText: 'B', isCorrect: false },
+        { answerText: 'A', isCorrect: false },
+        { answerText: 'C', isCorrect: true },
+      ],
+    },
+
+    {
+      id: 25,
+      questionText: 'Which is a Circle ?',
+      questionImage: problem23,
+      questionType: 'TYPE5',
+      answerOptions: [
+        { answerText: 'B', isCorrect: false },
+        { answerText: 'A', isCorrect: true },
+      ],
+    },
+    {
+      id: 19,
+      questionText: 'Which picture shows 7 + 1 = 8 ?',
+      questionImage: problem19,
+      questionType: 'TYPE4',
+      answerOptions: [
+        { answerText: 'A', isCorrect: true },
+        { answerText: 'B', isCorrect: false },
+      ],
+    },
+
+    {
+      id: 20,
+      questionText: 'How many fingers do you have ?',
+      questionImage: '',
+      questionType: 'TYPE4',
+      answerOptions: [
+        { answerText: '5', isCorrect: false },
+        { answerText: '10', isCorrect: true },
+        { answerText: '2', isCorrect: false },
+        { answerText: '6', isCorrect: false },
       ],
     },
 
@@ -224,131 +223,128 @@ const TEST_DYSCALCULIA = {
         { answerText: '2/6', isCorrect: true },
       ],
     },
-
     {
-      id: 16,
-      questionText: 'How many dots do you see ?',
-      questionImage: problem16,
-      questionType: 'TYPE4',
+      id: 6,
+      questionText: 'Which number comes after 8 ?',
+      questionType: 'TYPE2',
       answerOptions: [
-        { answerText: '2', isCorrect: false },
-        { answerText: '1', isCorrect: false },
-        { answerText: '5', isCorrect: false },
-        { answerText: '4', isCorrect: true },
-      ],
-    },
-
-    {
-      id: 17,
-      questionText: 'How many dolls are there ?',
-      questionImage: problem17,
-      questionType: 'TYPE4',
-      answerOptions: [
-        { answerText: '2', isCorrect: false },
-        { answerText: '1', isCorrect: false },
-        { answerText: '3', isCorrect: true },
-        { answerText: '4', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 18,
-      questionText: 'Count the apples.',
-      questionImage: problem18,
-      questionType: 'TYPE4',
-      answerOptions: [
-        { answerText: '7', isCorrect: true },
-        { answerText: '1', isCorrect: false },
-        { answerText: '5', isCorrect: false },
-        { answerText: '4', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 19,
-      questionText: 'Which picture shows 7 + 1 = 8 ?',
-      questionImage: problem19,
-      questionType: 'TYPE4',
-      answerOptions: [
-        { answerText: 'A', isCorrect: true },
-        { answerText: 'B', isCorrect: false },
-      ],
-    },
-
-    {
-      id: 20,
-      questionText: 'How many fingers do you have ?',
-      questionImage: '',
-      questionType: 'TYPE4',
-      answerOptions: [
-        { answerText: '5', isCorrect: false },
-        { answerText: '10', isCorrect: true },
-        { answerText: '2', isCorrect: false },
+        { answerText: '7', isCorrect: false },
+        { answerText: '9', isCorrect: true },
         { answerText: '6', isCorrect: false },
+        { answerText: '8', isCorrect: false },
       ],
     },
 
     {
-      id: 21,
-      questionText: 'Which is a Square ?',
-      questionImage: problem21,
-      questionType: 'TYPE5',
+      id: 7,
+      questionText: 'What comes after Thursday ?',
+      questionType: 'TYPE2',
+      answerOptions: [
+        { answerText: 'Saturday', isCorrect: false },
+        { answerText: 'Monday', isCorrect: false },
+        { answerText: 'Friday', isCorrect: true },
+        { answerText: 'Tuesday', isCorrect: false },
+      ],
+    },
+
+    {
+      id: 8,
+      questionText: 'What comes before June ?',
+      questionType: 'TYPE2',
+      answerOptions: [
+        { answerText: 'July', isCorrect: false },
+        { answerText: 'May', isCorrect: true },
+        { answerText: 'December', isCorrect: false },
+        { answerText: 'January', isCorrect: false },
+      ],
+    },
+    
+    {
+      id: 9,
+      questionText: 'How many apples are there in 1 Dozen ?',
+      questionType: 'TYPE2',
       answerOptions: [
         { answerText: '2', isCorrect: false },
+        { answerText: '12', isCorrect: true },
+        { answerText: '8', isCorrect: false },
+        { answerText: '20', isCorrect: false },
+      ],
+    },
+
+    {
+      id: 10,
+      questionText: 'How many days are there in a week ?',
+      questionType: 'TYPE2',
+      answerOptions: [
+        { answerText: '1', isCorrect: false },
+        { answerText: '3', isCorrect: false },
+        { answerText: '7', isCorrect: true },
+        { answerText: '14', isCorrect: false },
+      ],
+    },
+    {
+      id: 1,
+      questionText: '4 + 2 = ?',
+      questionType: 'TYPE1',
+      answerOptions: [
+        { answerText: '7', isCorrect: false },
+        { answerText: '6', isCorrect: true },
+        { answerText: '10', isCorrect: false },
+        { answerText: '8', isCorrect: false },
+      ],
+    },
+
+    {
+      id: 2,
+      questionText: '5 x 4 = ?',
+      questionType: 'TYPE1',
+      answerOptions: [
+        { answerText: '10', isCorrect: false },
+        { answerText: '9', isCorrect: false },
+        { answerText: '11', isCorrect: false },
+        { answerText: '20', isCorrect: true },
+      ],
+    },
+
+    {
+      id: 3,
+      questionText: '6 - 5 = ?',
+      questionType: 'TYPE1',
+      answerOptions: [
         { answerText: '1', isCorrect: true },
+        { answerText: '12', isCorrect: false },
+        { answerText: '15', isCorrect: false },
+        { answerText: '7', isCorrect: false },
       ],
     },
 
     {
-      id: 22,
-      questionText: 'Which is an acute angle ?',
-      questionImage: problem22,
-      questionType: 'TYPE5',
+      id: 4,
+      questionText: '4 / 2 = ?',
+      questionType: 'TYPE1',
       answerOptions: [
-        { answerText: 'B', isCorrect: false },
-        { answerText: 'A', isCorrect: true },
-        { answerText: 'C', isCorrect: false },
+        { answerText: '17', isCorrect: false },
+        { answerText: '1', isCorrect: false },
+        { answerText: '0', isCorrect: false },
+        { answerText: '2', isCorrect: true },
       ],
     },
 
     {
-      id: 23,
-      questionText: 'Which is a Triangle ?',
-      questionImage: problem23,
-      questionType: 'TYPE5',
+      id: 5,
+      questionText: '5 - 6 = ?',
+      questionType: 'TYPE1',
       answerOptions: [
-        { answerText: 'A', isCorrect: false },
-        { answerText: 'B', isCorrect: true },
+        { answerText: '-1', isCorrect: true },
+        { answerText: '1', isCorrect: false },
+        { answerText: '0', isCorrect: false },
+        { answerText: '2', isCorrect: false },
       ],
-    },
-
-    {
-      id: 24,
-      questionText: 'Which is an obtuse angle ?',
-      questionImage: problem22,
-      questionType: 'TYPE5',
-      answerOptions: [
-        { answerText: 'B', isCorrect: false },
-        { answerText: 'A', isCorrect: false },
-        { answerText: 'C', isCorrect: true },
-      ],
-    },
-
-    {
-      id: 25,
-      questionText: 'Which is a Circle ?',
-      questionImage: problem23,
-      questionType: 'TYPE5',
-      answerOptions: [
-        { answerText: 'B', isCorrect: false },
-        { answerText: 'A', isCorrect: true },
-      ],
-    },
-
+    }
   ]
 };
 
-export {
+export{
   TEST_DYSCALCULIA,
   TYPES,
 }
