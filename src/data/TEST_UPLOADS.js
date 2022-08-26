@@ -10,7 +10,7 @@ const TEST_HANDWRITING = {
     },
     {
         "id": 2,
-        "question": "Upload the your recorded Face Video",
+        "question": "Upload the vedio of yourself Reading a pargaraph in a book.",
         "instruction": "Please upload the pre recorded file"
     },
     {
