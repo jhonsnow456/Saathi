@@ -110,7 +110,7 @@ export default function RegisterForm() {
         timer: 2000,
       })
 
-      navigate("/test/listening", { replace: true });
+      navigate("/test/uploads", { replace: true });
 
 
       // fetch(
