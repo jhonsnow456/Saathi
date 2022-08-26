@@ -1,6 +1,7 @@
 const TEST_LISTENING = {
     details: {
         name: 'Listening Assesment',
+        next_test: '/test/speech/'
     },
     questions: {
         easy: [
