@@ -37,7 +37,7 @@ const TYPES = {
 const TEST_DYSCALCULIA = {
   details: {
     name: 'Dyscalculia',
-    next_test: 'test/color-blindness'
+    next_test: '/test/color-blindness'
   },
 
   questions: [
