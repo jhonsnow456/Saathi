@@ -1,14 +1,17 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { RouteProps } from 'react-router';
+import Loading from '../components/Loading';
 
 const asyncComponentLoader = (
   loadComponent: () => Promise<{ default: React.ComponentType<unknown> }>
-) =>
-  lazy(() =>
-    loadComponent().then((module) => ({
-      default: module.default as React.ComponentType<unknown>,
-    }))
+) => {
+  const LazyComponent = lazy(loadComponent);
+  return (props: any) => (
+    <Suspense fallback={<Loading />}>
+      <LazyComponent {...props} />
+    </Suspense>
   );
+};
 
 interface RouteConfig extends RouteProps {
   exact?: boolean;
