@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from './theme';
 
 import { withErrorHandler } from './errorHandling';
-import AppErrorBoundaryFallback from './errorHandling/Fallbacks/App/Component';
+import AppErrorBoundaryFallback from './errorHandling/Fallbacks/App';
 import Layout from './sections/Layout';
 
 import { BrowserRouter as Router } from 'react-router-dom';

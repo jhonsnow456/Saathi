@@ -1,10 +1,5 @@
 import React from 'react';
 
-interface WithErrorHandlerProps {
-  children: React.ReactNode;
-  fallback: React.ComponentType;
-}
-
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode; FallbackComponent: React.ComponentType },
   { hasError: boolean }

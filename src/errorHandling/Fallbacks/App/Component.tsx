@@ -18,14 +18,19 @@ function AppErrorBoundaryFallback() {
         </Typography>
         <div className={classes.buttons}>
           <div>
-            <Button target="_blank" rel="noreferrer" href={`mailto: ${email}`}>
+            <Button
+              target="_blank"
+              rel="noreferrer"
+              href={"mailto: " + email}
+            >
               {messages.app.crash.options.email}
             </Button>
           </div>
           <Typography component="h6">or</Typography>
           <div>
             <Button onClick={resetApp}>
-              {messages.app.crash.options.reset} <ResetIcon />
+              {messages.app.crash.options.reset}
+              <ResetIcon />
             </Button>
           </div>
         </div>
