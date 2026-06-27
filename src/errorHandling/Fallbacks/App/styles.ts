@@ -1,0 +1,23 @@
+import { makeStyles, createStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    wrapper: {
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    paper: {
+      padding: 40,
+      '& h6': {
+        paddingLeft: 15,
+      },
+    },
+    buttons: {
+      marginTop: 30,
+    },
+  })
+);
+
+export default useStyles;
